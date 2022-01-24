@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'DM', sans-serif;
+    font-size: 0.85rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+h1{
+    font-weight: lighter;
+    color: #901C1C;
+}
+
+// head..................................
+
+header{
+    border: solid 2px red;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+
+}
+
+.logo{
+    width: 14rem;
+}
+
+// .hashtag{
+
+//     &__categorie{
+//         border: solid 2px #901C1C;
+//         background: white;
+//         color: #901C1C;
+//         font-weight: bold;
+//         border-radius: 10rem;
+//         padding: 0.20rem 0.5rem 0.20rem 0.5rem;
+//     }
+// }
+
+// ......................................
+
+
+// main..................................
+
+.profil{
+    display: flex;
+    flex-direction: column;                  ;
+
+    &__icone{
+        // border: solid 2px black;
+        height: 12.5rem;
+        width: 12.5rem;
+        margin: 0 auto;
+        border-radius: 150px;
+
+        &--img{
+            height: 12.5rem;
+            width: 12.5rem;
+            object-fit: cover;
+            border-radius: 150px;
+        }
+    }
+    
+    &__txt{
+        vertical-align: middle;
+        
+        &--titre{
+            font-size: 2rem;
+            color: #D3573C;
+        }
+
+        &--localisation{
+            color: #901C1C;
+        }
+
+        &--prix{
+            color: #757575;
+        }
+    }
+}
+
+.accueil{
+    border: solid 2px blue;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+// ......................................

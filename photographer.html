@@ -1,36 +1,160 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+<html lang="fr">
+
+<head>   
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/photographer.css">
+  <!-- <link href="css/style.css" rel="stylesheet" type="text/css" /> -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+
+  <!-- <link rel="stylesheet" href="./fontawesome-free-5.15.4-web/"> -->
+  <!-- <link rel="stylesheet" href="fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/all.css"> -->
+  
+  <title>Fisheye - photographe </title>
+</head>
+
+
+<body>
+
+<!-- HEAD................................................. -->
+
+<header>
+  <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
+</header>
+
+<!-- ..................................................... -->
+
+
+<!-- MAIN................................................. -->
+
+<main id="main">
+
+  <div class="photograph">
+
+    <div class="photograph__info">
+      <p class="photograph__info--name">Mimi Keel</p>
+      <p class="photograph__info--localisation">London, UK</p>
+      <p class="photograph__info--citation">Voir le beau dans le quotidien</p>
+    </div>
+
+    <button class="photograph__contact" onclick="displayModal()">Contactez-moi</button>
+
+    <div class="photograph__photo">
+      <img src="./assets/images/MimiKeel.jpg" alt="Photo Mimi Keel" class="photograph__photo--img">
+    </div>
+
+  </div>
+
+  <div class="tri">
+    <p class="tri__txt">Trier par</p>
+    <button class="tri__btn">Popularité</button>
+    
+  </div>
+
+  <div class="galerie">
+
+    <div class="galerie__picture">
+    <img src="./assets/images/Mimi/Animals_Rainbow.jpg" alt="" class="galerie__picture--modele">
+      <div class="galerie__picture--legend">
+        <p>Légende de la photo</p>
+        <p>11</p>
+        <i class="fas fa-heart"></i>
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
+    
+    </div>
+
+    <div>
+    <img src="./assets/images/Mimi/Event_PintoWedding.jpg" alt="" class="galerie__picture--modele">
+      <div class="galerie__picture--legend">
+        <p>Légende de la photo</p>
+        <p>11</p>
+        <i class="fas fa-heart"></i>
+      </div>
+    </div>
+
+    <div>
+    <img src="./assets/images/Mimi/Event_SeasideWedding.jpg" alt="" class="galerie__picture--modele">
+      <div class="galerie__picture--legend">
+        <p>Légende de la photo</p>
+        <p>11</p>
+        <i class="fas fa-heart"></i>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="galerie">
+
+    <div>
+    <img src="./assets/images/Mimi/Portrait_Nora.jpg" alt="" class="galerie__picture--modele">
+      <div class="galerie__picture--legend">
+        <p>Légende de la photo</p>
+        <p>11</p>
+        <i class="fas fa-heart"></i>
+      </div>
+    </div>
+
+    <div>
+    <img src="./assets/images/Mimi/Portrait_Wednesday.jpg" alt="" class="galerie__picture--modele">
+      <div class="galerie__picture--legend">
+        <p>Légende de la photo</p>
+        <p>11</p>
+        <i class="fas fa-heart"></i>
+      </div>
+    </div>
+
+    <div>
+    <img src="./assets/images/Mimi/Travel_HillsideColor.jpg" alt="" class="galerie__picture--modele">
+      <div class="galerie__picture--legend">
+        <p>Légende de la photo</p>
+        <p>11</p>
+        <i class="fas fa-heart"></i>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</main>
+
+<!-- ..................................................... -->
+
+
+<!-- MODALE............................................... -->
+
+<div id="contact_modal">
+  
+  <div class="modal">
+
+    <header>
+      <h2>Contactez-moi</h2>
+      <img src="assets/icons/close.svg" onclick="closeModal()" />
+    </header>		
+     
+    <form>
+
+			<div>
+				<label>Prénom</label>
+				<input />
 			</div>
-		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+
+      <button class="contact_button">Envoyer</button>
+
+		</form>
+
+	</div>
+		
+</div>
+
+<!-- ........................................................ -->
+
+<script src="/scripts/utils/contactForm.js"></script>
+
+</body>
+
 </html>

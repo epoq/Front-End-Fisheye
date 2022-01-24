@@ -1,22 +1,152 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye</title>
-  </head>
-  <body>
-    <header>
-        <img src="assets/images/logo.png" class="logo" />
-        <h1>Nos photographes</h1>
-    </header>
-    <main id="main">
-        <div class="photographer_section"></div>
-    </main>
+<html lang="fr">
+  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+
+  <title>Fisheye</title>
+</head>
+
+
+<body>
+
+<!-- HEADER.................................................................. -->
+    
+<header>        
+  <a href="./index.html"><img src="assets/images/logo.png" class="logo" /></a>
+
+  <!-- <div class="hashtag">
+      <button class="hashtag__categorie">#Portrait</button>
+      <button class="hashtag__categorie">#Art</button>
+      <button class="hashtag__categorie">#Fashion</button>
+      <button class="hashtag__categorie">#Architecture</button>
+      <button class="hashtag__categorie">#Travel</button>
+      <button class="hashtag__categorie">#Sport</button>
+      <button class="hashtag__categorie">#Animals</button>
+      <button class="hashtag__categorie">#Events</button>
+  </div> -->
+
+  <h1>Nos photographes</h1>
+
+</header>
+
+<!-- ........................................................................ -->
+
+
+<!-- MAIN..................................................................... -->
+
+<main id="main">
+        <!-- <div class="photographer_section"></div> -->
+
+<!-- 3 premiers photographes............. -->
+
+<div class="firstpart accueil">
+
+    <div class="profil">
+        <div class="profil__icone">
+        <a href="./photographer.html"><img src="./assets/images/MimiKeel.jpg" alt="" class="profil__icone--img"></a>
+        </div>
+
+        <div class="profil__txt">
+          <p class="profil__txt--titre">Mimi Keel</p>
+          <p class="profil__txt--localisation">London, UK</p>
+          <p>Voir le beau dans le quotidien</p>
+          <p class="profil__txt--prix">400€/jour</p>
+        </div>
+    </div>
+
+    <div class="profil">
+        <div class="profil__icone">
+        <img src="./assets/images/EllieRoseWilkens.jpg" alt="" class="profil__icone--img">
+        </div>
+
+        <div class="profil__txt">
+          <p class="profil__txt--titre">Ellie-Rose Wilkens</p>
+          <p class="profil__txt--localisation">Paris, France</p>
+          <p>Travaille sur des compositions complexes</p>
+          <p class="profil__txt--prix">250€/jour</p>
+        </div>
+    </div>
+
+    <div class="profil">
+        <div class="profil__icone">
+        <img src="./assets/images/TracyGalindo.jpg" alt="" class="profil__icone--img">
+        </div>
+
+        <div class="profil__txt">
+          <p class="profil__txt--titre">Tracy Galindo</p>
+          <p class="profil__txt--localisation">Montreal, Canada</p>
+          <p>Photographe freelance</p>
+          <p class="profil__txt--prix">500€/jour</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- ................................-->
+
+<!-- 3 seconds photographes......... -->
+
+<div class="secondpart accueil">
+
+    <div class="profil">
+        <div class="profil__icone">
+        <img src="./assets/images/NabeelBradford.jpg" alt="" class="profil__icone--img">
+        </div>
+
+        <div class="profil__txt">
+          <p class="profil__txt--titre">Nabeel Bradford</p>
+          <p class="profil__txt--localisation">Mexico City, Mexico</p>
+          <p>Je vais toujours de l'avant</p>
+          <p class="profil__txt--prix">350€/jour</p>
+        </div>
+    </div>
+
+    <div class="profil">
+        <div class="profil__icone">
+        <img src="./assets/images/RhodeDubois.jpg" alt="" class="profil__icone--img">
+        </div>
+
+        <div class="profil__txt">
+          <p class="profil__txt--titre">Rhode Dubois</p>
+          <p class="profil__txt--localisation">Barcelona, Spain</p>
+          <p>Créatrice de souvenir</p>
+          <p class="profil__txt--prix">375€/jour</p>
+        </div>
+    </div>
+    
+    <div class="profil">
+        <div class="profil__icone">
+        <img src="./assets/images/MarcelNikolic.jpg" alt="" class="profil__icone--img">
+        </div>
+
+        <div class="profil__txt">
+          <p class="profil__txt--titre">Marcel Nikolic</p>
+          <p class="profil__txt--localisation">Berlin, Germany</p>
+          <p>Toujours à la recherche de LA photo</p>
+          <p class="profil__txt--prix">300€/jour</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- ............................ -->
+
+</main>
+
+<!-- .......................................................................... -->
+
     <script src="scripts/factories/Photographer.js"></script>
     <script src="scripts/pages/index.js"></script>
     <script src="scripts/pages/photographer.js"></script>
+
   </body>
+
+  
 </html>

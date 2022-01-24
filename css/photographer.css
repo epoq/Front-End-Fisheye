@@ -1,76 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM", sans-serif;
+  font-size: 0.85rem;
+  margin: 2rem 3.5rem 2rem 3.5rem;
+}
+
+.logo {
+  width: 14rem;
+}
+
+.photograph {
+  border: solid 2px red;
+  background: #FAFAFA;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+.photograph__info--name {
+  color: #D3573C;
+  font-size: 3rem;
+}
+.photograph__info--localisation {
+  color: #901C1C;
+  font-size: 1rem;
+}
+.photograph__info--citation {
+  color: #525252;
+}
+.photograph__contact {
+  background: #901C1C;
+  color: white;
+  height: 4rem;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+}
+.photograph__photo--img {
+  height: 11rem;
+  width: 11rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 150px;
+}
+
+.tri {
+  border: solid 2px blue;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+.tri__txt {
+  font-weight: bold;
+}
+.tri__btn {
+  background: #901C1C;
+  color: white;
+  font-weight: bold;
+  height: 3rem;
+  padding: 1rem;
+  margin-left: 1rem;
+  border-radius: 5px;
+}
+
+.galerie {
+  border: solid 2px fuchsia;
+  display: flex;
+  margin: 3rem 0rem 3rem 0rem;
+  justify-content: space-between;
+}
+.galerie__picture--modele {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 24rem;
+  width: 24rem;
+}
+.galerie__picture--legend {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: #901C1C;
+}
+
 #contact_modal {
-    display: none;
-}
-
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
-}
-
-.contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
-}
-
-.modal header {
-    justify-content: space-between;
-    width: 100%;
-}
-
-.modal header img {
-    cursor: pointer;
-}
-
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
-}
-
-form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-form label {
-    color: #312E2E;
-    font-size: 36px;
-}
-
-form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-}
-
-form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
-}
+  display: none;
+}/*# sourceMappingURL=photographer.css.map */
