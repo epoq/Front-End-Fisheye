@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+$colour-primary: #901C1C;
+$colour-secondary: #DB8876;
+$colour-name: #D3573C;
+
+
+
 body{
     font-family: 'DM', sans-serif;
     font-size: 0.85rem;
@@ -24,7 +30,7 @@ body{
 
 .photograph{
 
-    border: solid 2px red;
+    // border: solid 2px red;
     background: #FAFAFA;
     display: flex;
     justify-content: space-between;
@@ -34,12 +40,12 @@ body{
     &__info{
         
         &--name{
-            color: #D3573C;
+            color: $colour-name;
             font-size: 3rem;
         }
 
         &--localisation{
-            color: #901C1C;
+            color: $colour-primary;
             font-size: 1rem;
         }
 
@@ -49,7 +55,8 @@ body{
     }
 
     &__contact{
-        background: #901C1C;
+        cursor: pointer;
+        background: $colour-primary;
         color: white;
         height: 4rem;
         padding: 1rem;
@@ -70,7 +77,7 @@ body{
 }
 
 .tri{
-    border: solid 2px blue;
+    // border: solid 2px blue;
     display: flex;
     align-items: center;
     margin-top: 1rem;
@@ -80,7 +87,7 @@ body{
     }
 
     &__btn{
-        background: #901C1C;
+        background: $colour-primary;
         color: white;
         font-weight: bold;
         height: 3rem;
@@ -91,10 +98,10 @@ body{
 }
 
 .galerie{
-    border: solid 2px fuchsia;
+    // border: solid 2px fuchsia;
     display: flex;
     margin: 3rem 0rem 3rem 0rem;
-    justify-content: space-between;
+    justify-content: space-around;
 
     &__picture{
         
@@ -106,9 +113,9 @@ body{
 
         &--legend{
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             font-size: 1rem;
-            color: #901C1C;
+            color: $colour-primary;
         }
     }
 }
@@ -121,6 +128,147 @@ body{
 
 #contact_modal{
     display: none;
+    overflow: auto;
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    width: 30%;
+    left: 35rem;
+    top: 2rem;
+    bottom: 2rem;
+    
+
 }
 
+.modal{
+    background: $colour-secondary;
+    padding-bottom: 2rem;
+    border-radius: 5px;
+
+        &__entete{
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+
+            &--text{
+                display: flex;
+                flex-direction: column;
+                font-size: 2.5rem;
+            }
+
+            &--titre{
+                font-weight: lighter;
+            }
+
+            &--icone{
+                cursor: pointer;
+                height: 2rem;
+            }
+        }
+
+        &__formulaire{
+
+            margin-left: 2rem;
+            margin-right: 2rem;
+
+            &--item{
+                display: flex;
+                flex-direction: column;
+            }
+
+            &--bouton{
+                background: $colour-primary;
+                color: white;
+                margin-top: 1rem;
+                padding: 1rem 2rem 1rem 2rem;
+                border: none;
+                border-radius: 5px;
+                font-size: 0.7rem;
+                cursor: pointer
+            }
+        }
+}
+
+label{
+    font-size: 1.3rem;
+}
+
+input{
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+textarea{
+    border: none;
+    border-radius: 5px;
+}
+
+
 // ...................................................
+
+
+
+// RESPONSIVE.........................................
+
+@media (max-width: 1350px){
+
+    .galerie{
+       flex-direction: column;
+       text-align: center;
+    
+        &__picture{
+            
+            margin-bottom: 2rem;
+
+            &--modele{
+                height: 30rem;
+                width: 30rem;
+            }
+    
+            &--legend{
+               text-align: center;
+            }
+        }
+    }
+}
+
+@media (max-width: 750px){
+
+        .photograph{
+            flex-direction: column;
+
+            &__info{
+        
+                &--name{
+                   padding-bottom: 1rem;
+                }
+        
+                &--localisation{
+                    padding-bottom: 1rem;
+                }
+        
+                &--citation{
+                    padding-bottom: 1rem;
+                }
+            }
+        }
+    
+}
+
+@media (max-width: 500px){
+
+    .galerie{
+     
+         &__picture{
+
+             &--modele{
+                 height: 22rem;
+                //  width: 22rem;
+             }
+     
+         }
+     }
+
+}

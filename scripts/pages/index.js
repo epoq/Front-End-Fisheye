@@ -43,3 +43,10 @@
     
     init();
     
+
+
+    // Profil photographe
+
+const profilAccueil = document.querySelector(".profil")
+
+fetch("")
