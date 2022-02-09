@@ -47,10 +47,19 @@ header{
 
 // main..................................
 
+.photographer_section{
+    border: 2px solid blueviolet;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
 .profil{
     display: flex;
     flex-direction: column;
-    text-align: center;                ;
+    text-align: center;  
+    width: 33.3%;              ;
 
     &__icone{
         // border: solid 2px black;
@@ -70,7 +79,7 @@ header{
     &__txt{
         vertical-align: middle;
         
-        &--titre{
+        &--name{
             font-size: 2rem;
             color: #D3573C;
         }
@@ -83,13 +92,6 @@ header{
             color: #757575;
         }
     }
-}
-
-.accueil{
-    // border: solid 2px blue;
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
 }
 
 // ......................................

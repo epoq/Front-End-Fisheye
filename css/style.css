@@ -26,10 +26,18 @@ header {
   width: 14rem;
 }
 
+.photographer_section {
+  border: 2px solid blueviolet;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .profil {
   display: flex;
   flex-direction: column;
   text-align: center;
+  width: 33.3%;
 }
 .profil__icone {
   height: 12.5rem;
@@ -47,7 +55,7 @@ header {
 .profil__txt {
   vertical-align: middle;
 }
-.profil__txt--titre {
+.profil__txt--name {
   font-size: 2rem;
   color: #D3573C;
 }
@@ -56,12 +64,6 @@ header {
 }
 .profil__txt--prix {
   color: #757575;
-}
-
-.accueil {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
 }
 
 @media (max-width: 700px) {
