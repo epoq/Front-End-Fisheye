@@ -65,10 +65,10 @@ async function getPhotographers() {
 
 function photographerFactory(photographer){
 
-	var photographersContainer = document.createElement('div');
-	photographersContainer.setAttribute('class', 'photographer_section');
+	// var photographersContainer = document.createElement('div');
+	// photographersContainer.setAttribute('class', 'photographer_section');
 
-	// let photographersContainer = document.getElementsByClassName('photographer_section');
+	let photographersContainer = document.getElementsByClassName('photographer_section');
 
 
 	var containerChild = document.createElement('div');
@@ -105,8 +105,6 @@ function photographerFactory(photographer){
 	containerChildTextPrix.setAttribute('class', 'profil__txt--prix');
 	containerChildTextPrix.textContent = photographer.price +'€/jour';
 
-	console.log('test1');
-
 
 	// photographersContainer.forEach(element => {
 	// 	element.appendChild(containerChild);
@@ -114,7 +112,7 @@ function photographerFactory(photographer){
 
 	// photographersContainer[0].appendChild(containerChild);
 
-	photographersContainer.appendChild(containerChild);
+	// photographersContainer.appendChild(containerChild);
 
 	containerChild.appendChild(containerChildIcone);
 	containerChildIcone.appendChild(containerChildIconeLink);
@@ -126,8 +124,10 @@ function photographerFactory(photographer){
 	containerChildText.appendChild(containerChildTextCitation);
 	containerChildText.appendChild(containerChildTextPrix);
 
-	return photographersContainer;
-	console.log('test_test');
+	photographersContainer[0].appendChild(containerChild);
+
+	return containerChild;
+	
 }
 
 async function displayData(photographers) {

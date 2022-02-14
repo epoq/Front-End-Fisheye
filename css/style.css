@@ -7,8 +7,8 @@
 body {
   font-family: "DM", sans-serif;
   font-size: 0.85rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 h1 {
@@ -27,7 +27,6 @@ header {
 }
 
 .photographer_section {
-  border: 2px solid blueviolet;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -37,7 +36,8 @@ header {
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 33.3%;
+  width: 30%;
+  padding-bottom: 2rem;
 }
 .profil__icone {
   height: 12.5rem;
