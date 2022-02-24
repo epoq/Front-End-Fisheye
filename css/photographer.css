@@ -14,25 +14,25 @@ body {
   width: 14rem;
 }
 
-.photograph {
+.presentation {
   background: #FAFAFA;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
 }
-.photograph__info--name {
+.presentation__info--name {
   color: #D3573C;
   font-size: 3rem;
 }
-.photograph__info--localisation {
+.presentation__info--localisation {
   color: #901C1C;
   font-size: 1rem;
 }
-.photograph__info--citation {
+.presentation__info--citation {
   color: #525252;
 }
-.photograph__contact {
+.presentation__contact {
   cursor: pointer;
   background: #901C1C;
   color: white;
@@ -41,7 +41,15 @@ body {
   font-size: 1rem;
   border-radius: 6px;
 }
-.photograph__photo--img {
+.presentation__photo {
+  border: solid 2px fuchsia;
+  height: 11rem;
+  width: 11rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 150px;
+}
+.presentation__photo--img {
   height: 11rem;
   width: 11rem;
   -o-object-fit: cover;
@@ -57,7 +65,7 @@ body {
 .tri__txt {
   font-weight: bold;
 }
-.tri__btn {
+.tri__btn--menu {
   background: #901C1C;
   color: white;
   font-weight: bold;

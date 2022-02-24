@@ -28,7 +28,7 @@ body{
 
 // MAIN...............................................
 
-.photograph{
+.presentation{
 
     // border: solid 2px red;
     background: #FAFAFA;
@@ -65,6 +65,12 @@ body{
     }
 
     &__photo{
+
+        border: solid 2px fuchsia;
+        height: 11rem;
+        width: 11rem;
+        object-fit: cover;
+        border-radius: 150px;
         
         &--img{
             height: 11rem;
@@ -87,6 +93,8 @@ body{
     }
 
     &__btn{
+
+        &--menu{
         background: $colour-primary;
         color: white;
         font-weight: bold;
@@ -94,6 +102,7 @@ body{
         padding: 1rem;
         margin-left: 1rem;
         border-radius: 5px;
+        }
     }
 }
 

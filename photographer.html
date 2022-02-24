@@ -33,25 +33,29 @@
 
 <main id="main">
 
-  <div class="photograph">
+  <div class="presentation">
 
-    <div class="photograph__info">
-      <p class="photograph__info--name">Mimi Keel</p>
-      <p class="photograph__info--localisation">London, UK</p>
-      <p class="photograph__info--citation">Voir le beau dans le quotidien</p>
+    <div class="presentation__info">
+      <p class="presentation__info--name"></p>
+      <p class="presentation__info--localisation"></p>
+      <p class="presentation__info--citation"></p>
     </div>
 
-    <button class="photograph__contact">Contactez-moi</button>
+    <button class="presentation__contact">Contactez-moi</button>
 
-    <div class="photograph__photo">
-      <img src="./assets/images/MimiKeel.jpg" alt="Photo Mimi Keel" class="photograph__photo--img">
+    <div class="presentation__photo">
+      <img src="" alt="" class="presentation__photo--img">
     </div>
 
   </div>
 
   <div class="tri">
     <p class="tri__txt">Trier par</p>
-    <button class="tri__btn">Popularité</button>
+    <ul class="tri__btn">
+      <li><button class="tri__btn--menu">Popularité</button></li>
+      <li><button class="tri__btn--menu">Date</button></li>
+      <li><button class="tri__btn--menu">Titre</button></li>
+    </ul>
     
   </div>
 
@@ -135,7 +139,7 @@
 
       <div class="modal__entete--text">
         <p>Contactez-moi</p>
-        <p>Mimi Keel</p>
+        <p class="name_modale">Mimi Keel</p>
       </div>
 
       <img src="assets/icons/close.svg" class="modal__entete--icone"/>
@@ -175,7 +179,8 @@
 <!-- ........................................................ -->
 
 <script src="/scripts/utils/contactForm.js"></script>
-<script src="./scripts/factories/photographer.js"></script>
+<script src="scripts/pages/photographer.js"></script>
+
 
 </body>
 

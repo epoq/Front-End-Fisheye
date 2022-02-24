@@ -5,7 +5,7 @@ async function getPhotographers() {
 			name: 'Mimi Keel',
 			id: 243,
 			city: 'London',
-			country: 'UK',
+			country: 'UK', 
 			tagline: 'Voir le beau dans le quotidien',
 			price: 400,
 			portrait: 'MimiKeel.jpg',
@@ -65,11 +65,11 @@ async function getPhotographers() {
 
 function photographerFactory(photographer){
 
-	// var photographersContainer = document.createElement('div');
-	// photographersContainer.setAttribute('class', 'photographer_section');
+	// Appel de la section parent.............................
 
 	let photographersContainer = document.getElementsByClassName('photographer_section');
 
+	// Création de la structure profil........................
 
 	var containerChild = document.createElement('div');
 	containerChild.setAttribute('class', 'profil');
@@ -78,8 +78,8 @@ function photographerFactory(photographer){
 	containerChildIcone.setAttribute('class', 'profil__icone');
 
 	var containerChildIconeLink = document.createElement('a');
-	containerChildIconeLink.setAttribute('href', './photographer.html');
-
+	containerChildIconeLink.setAttribute('href', `photographer.html?id=${photographer.id}`);
+	// containerChildIconeLink.setAttribute('href', './photographer.html');
 
 	var containerChildIconeImg = document.createElement('img');
 	containerChildIconeImg.setAttribute('src', `./assets/images/${photographer.portrait}`);
@@ -110,9 +110,10 @@ function photographerFactory(photographer){
 	// 	element.appendChild(containerChild);
 	// });
 
-	// photographersContainer[0].appendChild(containerChild);
-
 	// photographersContainer.appendChild(containerChild);
+
+
+	// Appendchild............................................
 
 	containerChild.appendChild(containerChildIcone);
 	containerChildIcone.appendChild(containerChildIconeLink);
@@ -125,6 +126,8 @@ function photographerFactory(photographer){
 	containerChildText.appendChild(containerChildTextPrix);
 
 	photographersContainer[0].appendChild(containerChild);
+
+	// Appel du contenant "profil"...............................
 
 	return containerChild;
 	
