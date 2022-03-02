@@ -78,7 +78,7 @@ function photographerFactory(photographer){
 	containerChildIcone.setAttribute('class', 'profil__icone');
 
 	var containerChildIconeLink = document.createElement('a');
-	containerChildIconeLink.setAttribute('href', `photographer.html?id=${photographer.id}`);
+	containerChildIconeLink.setAttribute('href', `photographer.html?id=${photographer.id}&name=${photographer.name}`);
 	// containerChildIconeLink.setAttribute('href', './photographer.html');
 
 	var containerChildIconeImg = document.createElement('img');
