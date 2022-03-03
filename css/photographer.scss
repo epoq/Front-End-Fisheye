@@ -113,11 +113,17 @@ body{
     justify-content: space-around;
 
     &__picture{
+
+        display: flex;
+        flex-direction: column;
+        text-align: center;  
+        width: 30%;
+        padding-bottom: 2rem; 
         
-        &--modele{
+        &--modeleImg{
             object-fit: cover;
-            height: 24rem;
-            width: 24rem;
+            height: 18rem;
+            width: 18rem;
         }
 
         &--legend{
@@ -127,6 +133,12 @@ body{
             color: $colour-primary;
         }
     }
+}
+
+video{
+    object-fit: cover;
+    height: 18rem;
+    width: 18rem;
 }
 
 // ...................................................

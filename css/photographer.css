@@ -79,17 +79,31 @@ body {
   margin: 3rem 0rem 3rem 0rem;
   justify-content: space-around;
 }
-.galerie__picture--modele {
+.galerie__picture {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 30%;
+  padding-bottom: 2rem;
+}
+.galerie__picture--modeleImg {
   -o-object-fit: cover;
      object-fit: cover;
-  height: 24rem;
-  width: 24rem;
+  height: 18rem;
+  width: 18rem;
 }
 .galerie__picture--legend {
   display: flex;
   justify-content: space-around;
   font-size: 1rem;
   color: #901C1C;
+}
+
+video {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 18rem;
+  width: 18rem;
 }
 
 #contact_modal {
