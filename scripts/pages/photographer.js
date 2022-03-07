@@ -78,7 +78,7 @@ fetch("../../data/photographers.json")
 
   // Appel du parent
 
-  const galerie = document.getElementsByClassName('galerie');
+  const galerie = document.getElementsById('galerie');
 
 
   fetch("../../data/photographers.json")
@@ -92,7 +92,7 @@ fetch("../../data/photographers.json")
             if(data.media[index].video){
               var galeriePicture = document.createElement('div');
               galeriePicture.setAttribute('class','galerie__picture');
-              galerie[0].appendChild(galeriePicture);
+              galerie.appendChild(galeriePicture);
   
               var galeriePictureModel = document.createElement('div');
               galeriePictureModel.setAttribute('class','galerie__picture--modele');
@@ -104,18 +104,30 @@ fetch("../../data/photographers.json")
               galeriePictureModel.appendChild(galeriePictureModelVideo);
               galeriePictureModelVideo.appendChild(galeriePictureModelVideoSrc);  
 
-              const photoLegendTitle = document.getElementsByClassName('galerie__picture--title');  
-              const photoLegendNumber = document.getElementsByClassName('galerie__picture--number');
+              const photoLegendTitle = document.createElement('p');
+              photoLegendTitle.innerHTML = data.media[index].title;
+              galerie.appendChild(photoLegendTitle)
 
-              photoLegendTitle[0].textContent = data.media[index].title;
-              photoLegendNumber[0].textContent = data.media[index].likes;
+              const photoLegendNumber = document.createElement('p');            
+              photoLegendNumber.innerHTML = data.media[index].likes;
+              galerie.appendChild(photoLegendNumber);
+             
+              // photoLegendNumber.createElement = ('i');
+              // photoLegendNumber.classlist.add('fas fa-heart');
+              // photoLegendNumber.innerHTML = data.media[index].likes;
+              // galerie.appendChild(photoLegendNumber);
+
+              // const photoLegendTitle = document.getElementsByClassName('galerie__picture--title');  
+              // const photoLegendNumber = document.getElementsByClassName('galerie__picture--number');
+              // photoLegendTitle.innerHTML = data.media[index].title;
+              // photoLegendNumber.innerHTML = data.media[index].likes;
 
             }
 
             if(data.media[index].image){
               const galeriePicture = document.createElement('div');
               galeriePicture.setAttribute('class','galerie__picture');
-              galerie[0].appendChild(galeriePicture);
+              galerie.appendChild(galeriePicture);
   
               const galeriePictureModel = document.createElement('div');
               galeriePictureModel.setAttribute('class','galerie__picture--modele');
@@ -126,11 +138,22 @@ fetch("../../data/photographers.json")
               galeriePictureModelImg.className = 'galerie__picture--modeleImg';
               galeriePictureModel.appendChild(galeriePictureModelImg);
 
-              const photoLegendTitle = document.getElementsByClassName('galerie__picture--title');  
-              const photoLegendNumber = document.getElementsByClassName('galerie__picture--number');
+              const photoLegendTitle = document.createElement('p');
+              photoLegendTitle.innerHTML = data.media[index].title;
+              galerie.appendChild(photoLegendTitle)
 
-              photoLegendTitle[0].textContent = data.media[index].title;
-              photoLegendNumber[0].textContent = data.media[index].likes;
+              const photoLegendNumber = document.createElement('p');            
+              photoLegendNumber.innerHTML = data.media[index].likes;
+              galerie.appendChild(photoLegendNumber);
+
+              // const photoLegendTitle = document.getElementsByClassName('galerie__picture--title');  
+              // const photoLegendNumber = document.getElementsByClassName('galerie__picture--number');
+              // photoLegendTitle[0].textContent = data.media[index].title;
+
+              // photoLegendNumber.createElement = ('i');
+
+              // photoLegendTitle.innerHTML = data.media[index].title;
+              // photoLegendNumber.innerHTML = data.media[index].likes;
  
             }
 
