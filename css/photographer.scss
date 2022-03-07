@@ -107,19 +107,16 @@ body{
 }
 
 .galerie{
-    // border: solid 2px fuchsia;
+    border: solid 2px fuchsia;
     display: flex;
     margin: 3rem 0rem 3rem 0rem;
     justify-content: space-around;
+    flex-wrap: wrap;
 
     &__picture{
+        border: solid 2px red;
+        width: 33%;
 
-        display: flex;
-        flex-direction: column;
-        text-align: center;  
-        width: 30%;
-        padding-bottom: 2rem; 
-        
         &--modeleImg{
             object-fit: cover;
             height: 18rem;

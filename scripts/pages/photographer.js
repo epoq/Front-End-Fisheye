@@ -15,6 +15,7 @@ console.log(product_name);
 
 // Encadré de présentation...........................
 
+
 const namePhotographer = document.getElementsByClassName('presentation__info--name');
 const cityPhotographer = document.getElementsByClassName('presentation__info--localisation');
 const taglinePhotographer = document.getElementsByClassName('presentation__info--citation');
@@ -32,7 +33,6 @@ fetch("../../data/photographers.json")
         // console.log(data.photographers[index].id);
         
         if(product_id == data.photographers[index].id){
-            // console.log(data.photographers[index])
             namePhotographer[0].textContent = data.photographers[index].name;
             cityPhotographer[0].textContent = data.photographers[index].city +', '+  data.photographers[index].country;
             taglinePhotographer[0].textContent = data.photographers[index].tagline;        
@@ -45,6 +45,8 @@ fetch("../../data/photographers.json")
     }
 
   });
+
+
 
 
   // Modale......................
@@ -73,9 +75,6 @@ fetch("../../data/photographers.json")
 
   // Galerie Photo..................
 
-  // function mediaFactory(media){
-  //   const galerie = document.getElementsByClassName('galerie');
-  // }
 
   // Appel du parent
 
@@ -88,44 +87,29 @@ fetch("../../data/photographers.json")
     for (let index = 0; index < data.media.length; index++) {
         
         if(product_id == data.media[index].photographerId){
-            console.log(data.media[index])
-
-            const galeriePicture = document.createElement('div');
-            galeriePicture.setAttribute('class','galerie__picture');
-            galerie[0].appendChild(galeriePicture);
-
-            const photoLegend = document.createElement('div');
-            photoLegend.setAttribute('class', 'galerie__picture--legend');
-            galeriePicture.appendChild(photoLegend);
-
-            const photoLegendTitle = document.createElement('div');
-            photoLegendTitle.setAttribute('class', 'galerie__picture--title');
-            photoLegend.appendChild(photoLegendTitle);
-
-
-            const photoLegendNumber = document.createElement('div');
-            photoLegendNumber.setAttribute('class', 'galerie__picture--number');
-            photoLegend.appendChild(photoLegendNumber);
-
-
-            photoLegendTitle[0].textContent = data.media[index].title;
-            photoLegendNumber[0].textContent = data.media[index].likes; 
-
-            
+            // console.log(data.media[index])
+          
             if(data.media[index].video){
-              // const galeriePicture = document.createElement('div');
-              // galeriePicture.setAttribute('class','galerie__picture');
-              // galerie[0].appendChild(galeriePicture);
+              var galeriePicture = document.createElement('div');
+              galeriePicture.setAttribute('class','galerie__picture');
+              galerie[0].appendChild(galeriePicture);
   
-              const galeriePictureModel = document.createElement('div');
+              var galeriePictureModel = document.createElement('div');
               galeriePictureModel.setAttribute('class','galerie__picture--modele');
               galeriePicture.appendChild(galeriePictureModel);
   
-              const galeriePictureModelVideo = document.createElement('video');
-              const galeriePictureModelVideoSrc = document.createElement('source');
+              var galeriePictureModelVideo = document.createElement('video');
+              var galeriePictureModelVideoSrc = document.createElement('source');
               galeriePictureModelVideoSrc.setAttribute('src',`./assets/images/${product_name}/${data.media[index].video}`);
               galeriePictureModel.appendChild(galeriePictureModelVideo);
               galeriePictureModelVideo.appendChild(galeriePictureModelVideoSrc);  
+
+              const photoLegendTitle = document.getElementsByClassName('galerie__picture--title');  
+              const photoLegendNumber = document.getElementsByClassName('galerie__picture--number');
+
+              photoLegendTitle[0].textContent = data.media[index].title;
+              photoLegendNumber[0].textContent = data.media[index].likes;
+
             }
 
             if(data.media[index].image){
@@ -141,8 +125,15 @@ fetch("../../data/photographers.json")
               galeriePictureModelImg.setAttribute('src',`./assets/images/${product_name}/${data.media[index].image}`);
               galeriePictureModelImg.className = 'galerie__picture--modeleImg';
               galeriePictureModel.appendChild(galeriePictureModelImg);
-  
+
+              const photoLegendTitle = document.getElementsByClassName('galerie__picture--title');  
+              const photoLegendNumber = document.getElementsByClassName('galerie__picture--number');
+
+              photoLegendTitle[0].textContent = data.media[index].title;
+              photoLegendNumber[0].textContent = data.media[index].likes;
+ 
             }
+
          }
     }
 
