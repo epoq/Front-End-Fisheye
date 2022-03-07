@@ -78,7 +78,7 @@ fetch("../../data/photographers.json")
 
   // Appel du parent
 
-  const galerie = document.getElementsById('galerie');
+  const galerie = document.getElementById('galerie');
 
 
   fetch("../../data/photographers.json")
@@ -106,7 +106,7 @@ fetch("../../data/photographers.json")
 
               const photoLegendTitle = document.createElement('p');
               photoLegendTitle.innerHTML = data.media[index].title;
-              galerie.appendChild(photoLegendTitle)
+              galerie.appendChild(photoLegendTitle);
 
               const photoLegendNumber = document.createElement('p');            
               photoLegendNumber.innerHTML = data.media[index].likes;
@@ -122,6 +122,7 @@ fetch("../../data/photographers.json")
               // photoLegendTitle.innerHTML = data.media[index].title;
               // photoLegendNumber.innerHTML = data.media[index].likes;
 
+              // return galeriePicture;
             }
 
             if(data.media[index].image){
@@ -140,7 +141,7 @@ fetch("../../data/photographers.json")
 
               const photoLegendTitle = document.createElement('p');
               photoLegendTitle.innerHTML = data.media[index].title;
-              galerie.appendChild(photoLegendTitle)
+              galerie.appendChild(photoLegendTitle);
 
               const photoLegendNumber = document.createElement('p');            
               photoLegendNumber.innerHTML = data.media[index].likes;
@@ -154,7 +155,8 @@ fetch("../../data/photographers.json")
 
               // photoLegendTitle.innerHTML = data.media[index].title;
               // photoLegendNumber.innerHTML = data.media[index].likes;
- 
+              
+              // return galeriePicture;
             }
 
          }

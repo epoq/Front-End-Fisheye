@@ -81,21 +81,19 @@ body {
   justify-content: space-around;
   flex-wrap: wrap;
 }
-#galerie__picture {
+
+.galerie__picture {
   border: solid 2px red;
   width: 33%;
+  display: flex;
+  flex-direction: column;
 }
-#galerie__picture--modeleImg {
+
+.galerie__picture--modeleImg {
   -o-object-fit: cover;
      object-fit: cover;
   height: 18rem;
   width: 18rem;
-}
-#galerie__picture--legend {
-  display: flex;
-  justify-content: space-around;
-  font-size: 1rem;
-  color: #901C1C;
 }
 
 video {
