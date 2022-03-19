@@ -40,6 +40,7 @@ fetch("../../data/photographers.json")
           
             photographerImg.src =  './assets/images/' + data.photographers[index].portrait ;
             photographerImg.className = ('presentation__photo--img');
+            photographerImg.setAttribute('alt', data.photographers[index].name);
             portraitPhotographer[0].appendChild(photographerImg);
          }
     }
@@ -73,7 +74,7 @@ fetch("../../data/photographers.json")
 
 
 
-  // Galerie Photo..................
+  // Galerie Photos..................................
 
 
   // Appel du parent
@@ -81,48 +82,61 @@ fetch("../../data/photographers.json")
   const galerie = document.getElementById('galerie');
 
 
+  // Structure et récupération données photos/vidéos
+
+  // const encart = document.getElementsByClassName('encart');
+  // const encartTotal = document.getElementsByClassName('encart__total');
+  // const encartTotalChiffre = document.getElementsByClassName('encart__total--chiffre');
+  // const encartTarif = document.getElementsByClassName('encart__tarif');
+
   fetch("../../data/photographers.json")
   .then((res) => res.json())
   .then((data) => {
+    let totalLikes = 0;
     for (let index = 0; index < data.media.length; index++) {
+
         
         if(product_id == data.media[index].photographerId){
             // console.log(data.media[index])
-          
+
+            // totalLikes = totalLikes + data.media[index].likes;
+
             if(data.media[index].video){
+        
               var galeriePicture = document.createElement('div');
               galeriePicture.setAttribute('class','galerie__picture');
               galerie.appendChild(galeriePicture);
   
               var galeriePictureModel = document.createElement('div');
-              galeriePictureModel.setAttribute('class','galerie__picture--modele');
+              galeriePictureModel.setAttribute('class','galerie__picture--modele');  
               galeriePicture.appendChild(galeriePictureModel);
   
               var galeriePictureModelVideo = document.createElement('video');
               var galeriePictureModelVideoSrc = document.createElement('source');
               galeriePictureModelVideoSrc.setAttribute('src',`./assets/images/${product_name}/${data.media[index].video}`);
               galeriePictureModel.appendChild(galeriePictureModelVideo);
-              galeriePictureModelVideo.appendChild(galeriePictureModelVideoSrc);  
+              galeriePictureModelVideo.appendChild(galeriePictureModelVideoSrc);
+
+              const photoLegend = document.createElement('div');
+              photoLegend.setAttribute('class', 'galerie__picture--legend');
+              galeriePicture.appendChild(photoLegend);
 
               const photoLegendTitle = document.createElement('p');
               photoLegendTitle.innerHTML = data.media[index].title;
-              galerie.appendChild(photoLegendTitle);
+              photoLegend.appendChild(photoLegendTitle);
+
+              const photoLegendLikes = document.createElement('div');
+              photoLegendLikes.setAttribute('class', 'galerie__picture--likes');
+              photoLegend.appendChild(photoLegendLikes);
 
               const photoLegendNumber = document.createElement('p');            
               photoLegendNumber.innerHTML = data.media[index].likes;
-              galerie.appendChild(photoLegendNumber);
-             
-              // photoLegendNumber.createElement = ('i');
-              // photoLegendNumber.classlist.add('fas fa-heart');
-              // photoLegendNumber.innerHTML = data.media[index].likes;
-              // galerie.appendChild(photoLegendNumber);
+              photoLegendLikes.appendChild(photoLegendNumber);
 
-              // const photoLegendTitle = document.getElementsByClassName('galerie__picture--title');  
-              // const photoLegendNumber = document.getElementsByClassName('galerie__picture--number');
-              // photoLegendTitle.innerHTML = data.media[index].title;
-              // photoLegendNumber.innerHTML = data.media[index].likes;
+              const photoLegendIcone = document.createElement('i');
+              photoLegendIcone.setAttribute('class', 'fas fa-heart');
+              photoLegendLikes.appendChild(photoLegendIcone);            
 
-              // return galeriePicture;
             }
 
             if(data.media[index].image){
@@ -139,27 +153,39 @@ fetch("../../data/photographers.json")
               galeriePictureModelImg.className = 'galerie__picture--modeleImg';
               galeriePictureModel.appendChild(galeriePictureModelImg);
 
+              const photoLegend = document.createElement('div');
+              photoLegend.setAttribute('class', 'galerie__picture--legend');
+              galeriePicture.appendChild(photoLegend);
+
+
               const photoLegendTitle = document.createElement('p');
               photoLegendTitle.innerHTML = data.media[index].title;
-              galerie.appendChild(photoLegendTitle);
+              photoLegend.appendChild(photoLegendTitle);
+
+              const photoLegendLikes = document.createElement('div');
+              photoLegendLikes.setAttribute('class', 'galerie__picture--likes');
+              photoLegend.appendChild(photoLegendLikes);
 
               const photoLegendNumber = document.createElement('p');            
               photoLegendNumber.innerHTML = data.media[index].likes;
-              galerie.appendChild(photoLegendNumber);
+              photoLegendLikes.appendChild(photoLegendNumber);
 
-              // const photoLegendTitle = document.getElementsByClassName('galerie__picture--title');  
-              // const photoLegendNumber = document.getElementsByClassName('galerie__picture--number');
-              // photoLegendTitle[0].textContent = data.media[index].title;
+              const photoLegendIcone = document.createElement('i');
+              photoLegendIcone.setAttribute('class', 'fas fa-heart');
+              photoLegendLikes.appendChild(photoLegendIcone);            
 
               // photoLegendNumber.createElement = ('i');
-
-              // photoLegendTitle.innerHTML = data.media[index].title;
+              // photoLegendNumber.classlist.add('fas fa-heart');
               // photoLegendNumber.innerHTML = data.media[index].likes;
-              
-              // return galeriePicture;
+              // photoLegend.appendChild(photoLegendNumber);
             }
+            
+          // encartTotalChiffre[0].textContent = data.photographers[index].totalLikes;        
+          // encartTarif[0].textContent = data.photographers[index].price; 
 
          }
     }
+
+    console.log(totalLikes);
 
   });

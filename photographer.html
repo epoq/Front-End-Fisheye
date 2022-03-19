@@ -23,7 +23,7 @@
 <!-- HEAD................................................. -->
 
 <header>
-  <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
+  <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" /></a>
 </header>
 
 <!-- ..................................................... -->
@@ -32,6 +32,8 @@
 <!-- MAIN................................................. -->
 
 <main id="main">
+
+  <!-- Partie présentation du photographe -->
 
   <div class="presentation">
 
@@ -49,15 +51,25 @@
 
   </div>
 
+
+
+  <!-- Partie bouton de tri -->
+
   <div class="tri">
     <p class="tri__txt">Trier par</p>
-    <ul class="tri__btn">
-      <li><button class="tri__btn--menu">Popularité</button></li>
-      <li><button class="tri__btn--menu">Date</button></li>
-      <li><button class="tri__btn--menu">Titre</button></li>
-    </ul>
+
+      <div class="tri__btn">
+        <button class="tri__btn--menu"><a href="#">Popularité</a></button>
+        <button class="tri__btn--menu"><a href="#">Date</a></button>
+        <button class="tri__btn--menu"><a href="#">Titre</a></button>
+      </div>
+       
     
   </div>
+
+
+
+  <!-- Partie galerie photos -->
 
 
   <div id="galerie">
@@ -71,16 +83,28 @@
       <div class="galerie__picture--legend">
 
         <p class="galerie__picture--title"></p>
-        <p class="galerie__picture--number">122</p>
-        <i class="fas fa-heart">122</i>
+
+        <div class="galerie__picture--likes">
+          <p class="galerie__picture--number">122</p>
+          <i class="fas fa-heart">122</i>
+        </div>
         
       </div>
     
     </div> -->
+    
 
   </div>
 
+  <!-- Encart bas de page -->
 
+  <!-- <div class="encart">
+    <div class="encart__total">
+      <p class="encart__total--chiffre"></p>
+      <i class="fas fa-heart"></i>
+    </div>
+    <p class="encart__tarif"></p>
+  </div> -->
 
 </main>
 

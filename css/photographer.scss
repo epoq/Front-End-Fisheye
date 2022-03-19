@@ -38,15 +38,18 @@ body{
     padding: 2rem;
 
     &__info{
+
+        line-height: 2.5rem;
         
         &--name{
             color: $colour-name;
             font-size: 3rem;
+            padding-bottom: 1rem;
         }
 
         &--localisation{
             color: $colour-primary;
-            font-size: 1rem;
+            font-size: 1.2rem;
         }
 
         &--citation{
@@ -82,6 +85,11 @@ body{
 
 }
 
+// Bouton de tri..................................
+
+
+
+
 .tri{
     // border: solid 2px blue;
     display: flex;
@@ -106,24 +114,49 @@ body{
     }
 }
 
+// Galerie photos.................................
+
 #galerie{
-    border: solid 2px fuchsia;
+    // border: solid 2px fuchsia;
     display: flex;
     margin: 3rem 0rem 3rem 0rem;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
 .galerie__picture{
-    border: solid 2px red;
-    width: 33%;
+    // border: solid 2px red;
+    width: 30%;
+    margin: 1rem;
     
 }
 
 .galerie__picture--modeleImg{
+    object-fit: cover;   
+    height: 18rem;
+    width: 26rem;
+}
+
+.galerie__picture--legend{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    color: $colour-primary;
+}
+
+.galerie__picture--likes{
+    display: flex;
+}
+
+.fas{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+video{
     object-fit: cover;
     height: 18rem;
-    width: 18rem;
+    width: 26rem;
 }
 
 // #galerie{
@@ -152,11 +185,8 @@ body{
 //     }
 // }
 
-video{
-    object-fit: cover;
-    height: 18rem;
-    width: 18rem;
-}
+
+
 
 // ...................................................
 
@@ -245,6 +275,12 @@ textarea{
 
 
 // ...................................................
+
+// Encart bas de page.................................
+
+// .encart{
+//     background: #D3573C;
+// }
 
 
 
