@@ -105,8 +105,6 @@ body{
         flex-direction: column;
 
         &--back{
-            display: flex;
-            flex-direction: column;
             display: none;
         }
 
@@ -216,6 +214,9 @@ video{
     border: solid 2px blue;
     background: $colour-name;
     position: fixed;
+    width: 30%;
+    bottom: 0;
+    right: 0;
 }
 
 

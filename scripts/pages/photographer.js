@@ -33,6 +33,9 @@ fetch("../../data/photographers.json")
         // console.log(data.photographers[index].id);
         
         if(product_id == data.photographers[index].id){
+
+            photographerPrice = data.photographers[index].price;
+
             namePhotographer[0].textContent = data.photographers[index].name;
             cityPhotographer[0].textContent = data.photographers[index].city +', '+  data.photographers[index].country;
             taglinePhotographer[0].textContent = data.photographers[index].tagline;        
@@ -42,8 +45,13 @@ fetch("../../data/photographers.json")
             photographerImg.className = ('presentation__photo--img');
             photographerImg.setAttribute('alt', data.photographers[index].name);
             portraitPhotographer[0].appendChild(photographerImg);
+
+            
          }
     }
+
+    const tarif = document.getElementsByClassName('encart__tarif');
+    tarif[0].textContent = photographerPrice;
 
   });
 
@@ -95,27 +103,8 @@ fetch("../../data/photographers.json")
         
         if(product_id == data.media[index].photographerId){
             // console.log(data.media[index])
-
-            // totalLikes = totalLikes + data.media[index].likes;
-
-            const encartTotal = document.createElement('div');
-            encartTotal.setAttribute('class', 'encart__total');
-            encart.appendChild(encartTotal);
-
-            const encartTotalChiffre = document.createElement('p');
-            encartTotalChiffre.setAttribute('class', 'encart__total--chiffre');
-            encartTotal.appendChild(encartTotalChiffre);
-
-            const encartTotalIcone = document.createElement('i');
-            encartTotalIcone.setAttribute('class', 'fas fa-heart');
-            encartTotal.appendChild(encartTotalIcone);
-            
-            const encartTarif = document.createElement('p');
-            encartTarif.setAttribute('class', 'encart__tarif');
-            encart.appendChild(encartTarif);
-
-            console.log(encart);
-
+          
+            totalLikes = totalLikes + data.media[index].likes;
 
             if(data.media[index].video){
         
@@ -202,69 +191,29 @@ fetch("../../data/photographers.json")
 
     }
 
-    console.log(totalLikes);
-
+    const totalChiffre = document.getElementsByClassName('encart__total--chiffre');
+    totalChiffre[0].textContent = totalLikes;
+    
   });
 
-  // Encart Bas de page.....................................................
-
-  const encart = document.getElementById('encart');
   
-  fetch("../../data/photographers.json")
-  .then((res) => res.json())
-  .then((data) => {
-    let totalLikes = 0;
-    for (let index = 0; index < data.photographers.length; index++) {
-
-        
-        if(product_id == data.media[index].photographerId){
-
-            // totalLikes = totalLikes + data.media[index].likes;
-
-            const encartTotal = document.createElement('div');
-            encartTotal.setAttribute('class', 'encart__total');
-            encart.appendChild(encartTotal);
-
-            const encartTotalChiffre = document.createElement('p');
-            encartTotalChiffre.setAttribute('class', 'encart__total--chiffre');
-            encartTotal.appendChild(encartTotalChiffre);
-
-            const encartTotalIcone = document.createElement('i');
-            encartTotalIcone.setAttribute('class', 'fas fa-heart');
-            encartTotal.appendChild(encartTotalIcone);
-            
-            const encartTarif = document.createElement('p');
-            encartTarif.setAttribute('class', 'encart__tarif');
-            encart.appendChild(encartTarif);
-
-            encartTotalChiffre[0].textContent = data.photographers[index].totalLikes;        
-            encartTarif[0].textContent = data.photographers[index].price;
-
-            // console.log(encart); 
-
-         }
-    }
-
-  });
-
   // Bouton de tri.................................................
 
 
-  const menuTri = document.getElementById('tri__btn--back');
+  const menuTri = document.getElementsByClassName('tri__btn--back');
   const btnTri = document.querySelector(".btn_tri");
   
   
   btnTri.addEventListener("click", menuTriOpen);
+  console.log('evenement');
  
  
   // Fonction pour ouvrir le menu de tri
   function menuTriOpen(){
-    menuTri.style.display = "block";
-    console.log('menu de tri');
+    menuTri[0].style.display = "block";
+    menuTri[0].style.display = "flex";
+    menuTri[0].style.display = "column";
   }
-  
-  
-
 
 
 

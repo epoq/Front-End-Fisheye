@@ -73,8 +73,6 @@ body {
   flex-direction: column;
 }
 .tri__btn--back {
-  display: flex;
-  flex-direction: column;
   display: none;
 }
 .tri__btn--menu {
@@ -140,6 +138,9 @@ video {
   border: solid 2px blue;
   background: #D3573C;
   position: fixed;
+  width: 30%;
+  bottom: 0;
+  right: 0;
 }
 
 #contact_modal {
