@@ -56,14 +56,19 @@
   <!-- Partie bouton de tri -->
 
   <div class="tri">
+
     <p class="tri__txt">Trier par</p>
 
       <div class="tri__btn">
-        <button class="tri__btn--menu"><a href="#">Popularité</a></button>
-        <button class="tri__btn--menu"><a href="#">Date</a></button>
-        <button class="tri__btn--menu"><a href="#">Titre</a></button>
-      </div>
-       
+
+        <button class="tri__btn--menu btn_tri"><a href="#" class="tri__btn--lien">Popularité</a><i class="fa-solid fa-chevron-down"></i></button>
+
+        <div id="tri__btn--back">
+          <button class="tri__btn--menu"><a href="#" class="tri__btn--lien">Date</a></button>
+          <button class="tri__btn--menu"><a href="#" class="tri__btn--lien">Titre</a></button>
+        </div>
+
+      </div>      
     
   </div>
 
@@ -98,13 +103,15 @@
 
   <!-- Encart bas de page -->
 
-  <!-- <div class="encart">
-    <div class="encart__total">
+  <div id="encart">
+
+    <!-- <div class="encart__total">
       <p class="encart__total--chiffre"></p>
       <i class="fas fa-heart"></i>
     </div>
-    <p class="encart__tarif"></p>
-  </div> -->
+    <p class="encart__tarif"></p> -->
+
+  </div>
 
 </main>
 

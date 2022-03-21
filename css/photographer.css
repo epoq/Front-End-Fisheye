@@ -62,20 +62,36 @@ body {
 
 .tri {
   display: flex;
-  align-items: center;
+  justify-content: baseline;
   margin-top: 1rem;
 }
 .tri__txt {
   font-weight: bold;
 }
+.tri__btn {
+  display: flex;
+  flex-direction: column;
+}
+.tri__btn--back {
+  display: flex;
+  flex-direction: column;
+  display: none;
+}
 .tri__btn--menu {
   background: #901C1C;
-  color: white;
   font-weight: bold;
   height: 3rem;
   padding: 1rem;
   margin-left: 1rem;
   border-radius: 5px;
+}
+.tri__btn--lien {
+  color: white;
+  text-decoration: none;
+}
+
+.fa-chevron-down {
+  color: #FAFAFA;
 }
 
 #galerie {
@@ -118,6 +134,12 @@ video {
      object-fit: cover;
   height: 18rem;
   width: 26rem;
+}
+
+#encart {
+  border: solid 2px blue;
+  background: #D3573C;
+  position: fixed;
 }
 
 #contact_modal {

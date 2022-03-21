@@ -13,7 +13,7 @@ const product_name = urlParams.get("name").split(' ')[0].replace('-', ' ');
 console.log(product_name);
 
 
-// Encadré de présentation...........................
+// Encadré de présentation......................................................................
 
 
 const namePhotographer = document.getElementsByClassName('presentation__info--name');
@@ -50,7 +50,8 @@ fetch("../../data/photographers.json")
 
 
 
-  // Modale......................
+  // Modale...................................................................
+
 
   const modal = document.getElementById("contact_modal");
   const closeBtn = document.querySelector(".modal__entete--icone");
@@ -74,20 +75,16 @@ fetch("../../data/photographers.json")
 
 
 
-  // Galerie Photos..................................
+
+
+  // Galerie Photos.......................................................
 
 
   // Appel du parent
 
   const galerie = document.getElementById('galerie');
 
-
   // Structure et récupération données photos/vidéos
-
-  // const encart = document.getElementsByClassName('encart');
-  // const encartTotal = document.getElementsByClassName('encart__total');
-  // const encartTotalChiffre = document.getElementsByClassName('encart__total--chiffre');
-  // const encartTarif = document.getElementsByClassName('encart__tarif');
 
   fetch("../../data/photographers.json")
   .then((res) => res.json())
@@ -101,6 +98,25 @@ fetch("../../data/photographers.json")
 
             // totalLikes = totalLikes + data.media[index].likes;
 
+            const encartTotal = document.createElement('div');
+            encartTotal.setAttribute('class', 'encart__total');
+            encart.appendChild(encartTotal);
+
+            const encartTotalChiffre = document.createElement('p');
+            encartTotalChiffre.setAttribute('class', 'encart__total--chiffre');
+            encartTotal.appendChild(encartTotalChiffre);
+
+            const encartTotalIcone = document.createElement('i');
+            encartTotalIcone.setAttribute('class', 'fas fa-heart');
+            encartTotal.appendChild(encartTotalIcone);
+            
+            const encartTarif = document.createElement('p');
+            encartTarif.setAttribute('class', 'encart__tarif');
+            encart.appendChild(encartTarif);
+
+            console.log(encart);
+
+
             if(data.media[index].video){
         
               var galeriePicture = document.createElement('div');
@@ -112,6 +128,8 @@ fetch("../../data/photographers.json")
               galeriePicture.appendChild(galeriePictureModel);
   
               var galeriePictureModelVideo = document.createElement('video');
+              galeriePictureModelVideo.setAttribute('role','button');
+              galeriePictureModelVideo.setAttribute('controls','controls');
               var galeriePictureModelVideoSrc = document.createElement('source');
               galeriePictureModelVideoSrc.setAttribute('src',`./assets/images/${product_name}/${data.media[index].video}`);
               galeriePictureModel.appendChild(galeriePictureModelVideo);
@@ -179,13 +197,74 @@ fetch("../../data/photographers.json")
               // photoLegendNumber.innerHTML = data.media[index].likes;
               // photoLegend.appendChild(photoLegendNumber);
             }
-            
-          // encartTotalChiffre[0].textContent = data.photographers[index].totalLikes;        
-          // encartTarif[0].textContent = data.photographers[index].price; 
 
          }
+
     }
 
     console.log(totalLikes);
 
   });
+
+  // Encart Bas de page.....................................................
+
+  const encart = document.getElementById('encart');
+  
+  fetch("../../data/photographers.json")
+  .then((res) => res.json())
+  .then((data) => {
+    let totalLikes = 0;
+    for (let index = 0; index < data.photographers.length; index++) {
+
+        
+        if(product_id == data.media[index].photographerId){
+
+            // totalLikes = totalLikes + data.media[index].likes;
+
+            const encartTotal = document.createElement('div');
+            encartTotal.setAttribute('class', 'encart__total');
+            encart.appendChild(encartTotal);
+
+            const encartTotalChiffre = document.createElement('p');
+            encartTotalChiffre.setAttribute('class', 'encart__total--chiffre');
+            encartTotal.appendChild(encartTotalChiffre);
+
+            const encartTotalIcone = document.createElement('i');
+            encartTotalIcone.setAttribute('class', 'fas fa-heart');
+            encartTotal.appendChild(encartTotalIcone);
+            
+            const encartTarif = document.createElement('p');
+            encartTarif.setAttribute('class', 'encart__tarif');
+            encart.appendChild(encartTarif);
+
+            encartTotalChiffre[0].textContent = data.photographers[index].totalLikes;        
+            encartTarif[0].textContent = data.photographers[index].price;
+
+            // console.log(encart); 
+
+         }
+    }
+
+  });
+
+  // Bouton de tri.................................................
+
+
+  const menuTri = document.getElementById('tri__btn--back');
+  const btnTri = document.querySelector(".btn_tri");
+  
+  
+  btnTri.addEventListener("click", menuTriOpen);
+ 
+ 
+  // Fonction pour ouvrir le menu de tri
+  function menuTriOpen(){
+    menuTri.style.display = "block";
+    console.log('menu de tri');
+  }
+  
+  
+
+
+
+

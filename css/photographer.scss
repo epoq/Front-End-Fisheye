@@ -22,11 +22,12 @@ body{
     width: 14rem;
 }
 
-// ...................................................
-
 
 
 // MAIN...............................................
+
+
+// Présentation...........................
 
 .presentation{
 
@@ -88,12 +89,10 @@ body{
 // Bouton de tri..................................
 
 
-
-
 .tri{
     // border: solid 2px blue;
     display: flex;
-    align-items: center;
+    justify-content: baseline;
     margin-top: 1rem;
 
     &__txt{
@@ -102,16 +101,39 @@ body{
 
     &__btn{
 
-        &--menu{
-        background: $colour-primary;
-        color: white;
-        font-weight: bold;
-        height: 3rem;
-        padding: 1rem;
-        margin-left: 1rem;
-        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+
+        &--back{
+            display: flex;
+            flex-direction: column;
+            display: none;
         }
+
+        &--menu{
+            background: $colour-primary;
+            font-weight: bold;
+            height: 3rem;
+            padding: 1rem;
+            margin-left: 1rem;
+            border-radius: 5px;
+            }
+
+        &--lien{
+            color: white;
+            text-decoration: none;
+        }      
     }
+}
+
+// #tri__btn--back{
+//     display: flex;
+//     flex-direction: column;
+//     display: none;
+// }
+
+.fa-chevron-down{
+    color: #FAFAFA;
 }
 
 // Galerie photos.................................
@@ -188,7 +210,13 @@ video{
 
 
 
-// ...................................................
+// Encart...................................
+
+#encart{
+    border: solid 2px blue;
+    background: $colour-name;
+    position: fixed;
+}
 
 
 
