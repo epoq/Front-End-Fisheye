@@ -210,13 +210,23 @@ video{
 
 // Encart...................................
 
-#encart{
-    border: solid 2px blue;
-    background: $colour-name;
+.encart{
+    background: $colour-secondary;
     position: fixed;
-    width: 30%;
+    width: 20%;
     bottom: 0;
     right: 0;
+    border-radius: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    margin-right: 1.5rem;
+
+        &__total{
+            display: flex;
+        }
 }
 
 

@@ -51,7 +51,7 @@ fetch("../../data/photographers.json")
     }
 
     const tarif = document.getElementsByClassName('encart__tarif');
-    tarif[0].textContent = photographerPrice;
+    tarif[0].textContent = photographerPrice +'€/jour';
 
   });
 
@@ -212,7 +212,7 @@ fetch("../../data/photographers.json")
   function menuTriOpen(){
     menuTri[0].style.display = "block";
     menuTri[0].style.display = "flex";
-    menuTri[0].style.display = "column";
+    menuTri[0].style.flexdirection = "column";
   }
 
 

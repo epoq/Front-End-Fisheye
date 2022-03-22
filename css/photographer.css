@@ -134,13 +134,22 @@ video {
   width: 26rem;
 }
 
-#encart {
-  border: solid 2px blue;
-  background: #D3573C;
+.encart {
+  background: #DB8876;
   position: fixed;
-  width: 30%;
+  width: 20%;
   bottom: 0;
   right: 0;
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: bolder;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  margin-right: 1.5rem;
+}
+.encart__total {
+  display: flex;
 }
 
 #contact_modal {
