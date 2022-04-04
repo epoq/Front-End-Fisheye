@@ -10,7 +10,7 @@ const product_id = urlParams.get("id");
 const product_name = urlParams.get("name").split(' ')[0].replace('-', ' ');
 
 
-console.log(product_name);
+// console.log(product_name);
 
 
 // Encadré de présentation......................................................................
@@ -37,7 +37,7 @@ fetch("../../data/photographers.json")
             photographerPrice = data.photographers[index].price;
 
             namePhotographer[0].textContent = data.photographers[index].name;
-            cityPhotographer[0].textContent = data.photographers[index].city +', '+  data.photographers[index].country;
+            cityPhotographer[0].textContent = data.photographers[index].city +', '+ data.photographers[index].country;
             taglinePhotographer[0].textContent = data.photographers[index].tagline;        
             nameModale[0].textContent = data.photographers[index].name; 
           
@@ -73,7 +73,6 @@ fetch("../../data/photographers.json")
   // Fonction pour ouvrir la modale
   function modalOpen(){
       modal.style.display = "block";
-      console.log("btn cliqué");
   }
   
   // Fonction pour fermer la modale
@@ -91,6 +90,7 @@ fetch("../../data/photographers.json")
   // Appel du parent
 
   const galerie = document.getElementById('galerie');
+  
 
   // Structure et récupération données photos/vidéos
 
@@ -104,8 +104,10 @@ fetch("../../data/photographers.json")
         if(product_id == data.media[index].photographerId){
             // console.log(data.media[index])
           
-            totalLikes = totalLikes + data.media[index].likes;
+            
+            totalLikes = totalLikes + data.media[index].likes; 
 
+            
             if(data.media[index].video){
         
               var galeriePicture = document.createElement('div');
@@ -136,12 +138,13 @@ fetch("../../data/photographers.json")
               photoLegendLikes.setAttribute('class', 'galerie__picture--likes');
               photoLegend.appendChild(photoLegendLikes);
 
-              const photoLegendNumber = document.createElement('p');            
+              const photoLegendNumber = document.createElement('p'); 
+              photoLegendNumber.setAttribute('class', 'galerie__picture--number');        
               photoLegendNumber.innerHTML = data.media[index].likes;
               photoLegendLikes.appendChild(photoLegendNumber);
 
               const photoLegendIcone = document.createElement('i');
-              photoLegendIcone.setAttribute('class', 'fas fa-heart');
+              photoLegendIcone.setAttribute('class', 'fas fa-heart heart');
               photoLegendLikes.appendChild(photoLegendIcone);            
 
             }
@@ -173,27 +176,80 @@ fetch("../../data/photographers.json")
               photoLegendLikes.setAttribute('class', 'galerie__picture--likes');
               photoLegend.appendChild(photoLegendLikes);
 
-              const photoLegendNumber = document.createElement('p');            
+              const photoLegendNumber = document.createElement('p');
+              photoLegendNumber.setAttribute('class', 'galerie__picture--number');            
               photoLegendNumber.innerHTML = data.media[index].likes;
               photoLegendLikes.appendChild(photoLegendNumber);
 
               const photoLegendIcone = document.createElement('i');
-              photoLegendIcone.setAttribute('class', 'fas fa-heart');
+              photoLegendIcone.setAttribute('class', 'fas fa-heart heart');
               photoLegendLikes.appendChild(photoLegendIcone);            
-
-              // photoLegendNumber.createElement = ('i');
-              // photoLegendNumber.classlist.add('fas fa-heart');
-              // photoLegendNumber.innerHTML = data.media[index].likes;
-              // photoLegend.appendChild(photoLegendNumber);
             }
 
          }
-
+        
     }
 
+
+    // Encart de bas de page
     const totalChiffre = document.getElementsByClassName('encart__total--chiffre');
     totalChiffre[0].textContent = totalLikes;
-    
+
+
+
+    // Incrémentation des likes
+
+
+    // const totalLike = document.getElementsByClassName('encart__total--chiffre');
+    var els = document.getElementsByClassName('heart');
+
+    Array.prototype.forEach.call(els, function(els){
+    els.addEventListener('click', function() {
+    const listChild = els.closest('.galerie__picture--likes').children;
+
+
+    for(var i = 0; i < listChild.length; i++) {
+      if(listChild[i].getAttribute('class') ==='galerie__picture--number'){
+        // obtenir les likes
+        const getLikeDefault = listChild[i].textContent;
+        // ajouter un like
+        const addLikePlus = parseInt(getLikeDefault) + 1;
+        // inserer un nouveau like
+        listChild[i].textContent = addLikePlus;
+
+        // compte total addLikePlus
+
+        // const getLikeTotal = totalChiffre.textContent;
+        const addLikeTotal = parseInt(totalLikes) + 1;
+        totalChiffre[i].textContent = addLikeTotal;
+
+        console.log(addLikeTotal);
+      }
+    }
+
+    });
+
+    });  
+
+      // const menuDate = document.getElementsByClassName('menuDate');
+
+      // menuDate.addEventListener('click', triByDate);
+      // function triByDate(){
+      //   console.log(data.media[index].date);
+      // }
+
+
+      // const modalGalerie = document.getElementById('modalGalerie');
+      // const modalGaleriePhoto = document.getElementsByClassName('galerie__picture--modeleImg');
+      
+
+      // modalGaleriePhoto.addEventListener("click", modalGalerieOn);
+
+      // function modalGalerieOn(){
+      //   modalGalerie.style.display = 'block';
+      // }
+
+
   });
 
   
@@ -201,19 +257,30 @@ fetch("../../data/photographers.json")
 
 
   const menuTri = document.getElementsByClassName('tri__btn--back');
+  const divTri = document.querySelector(".tri__btn");
   const btnTri = document.querySelector(".btn_tri");
   
   
-  btnTri.addEventListener("click", menuTriOpen);
-  console.log('evenement');
+  
+  btnTri.addEventListener("mouseenter", menuTriOpen);
+  divTri.addEventListener("mouseleave", menuTriClose);
  
  
   // Fonction pour ouvrir le menu de tri
   function menuTriOpen(){
     menuTri[0].style.display = "block";
     menuTri[0].style.display = "flex";
-    menuTri[0].style.flexdirection = "column";
+    menuTri[0].style.flexDirection = "column";
   }
+
+  function menuTriClose(){
+    menuTri[0].style.display = "none";
+  }
+
+
+
+
+
 
 
 

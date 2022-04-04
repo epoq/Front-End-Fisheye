@@ -82,6 +82,8 @@ body {
   padding: 1rem;
   margin-left: 1rem;
   border-radius: 5px;
+  border-top: none;
+  cursor: pointer;
 }
 .tri__btn--lien {
   color: white;
@@ -122,9 +124,10 @@ body {
   display: flex;
 }
 
-.fas {
+.heart {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  cursor: pointer;
 }
 
 video {
@@ -221,38 +224,108 @@ textarea {
   border-radius: 5px;
 }
 
-@media (max-width: 1350px) {
-  .galerie {
-    flex-direction: column;
-    text-align: center;
-  }
-  .galerie__picture {
-    margin-bottom: 2rem;
-  }
-  .galerie__picture--modele {
-    height: 30rem;
-    width: 30rem;
-  }
-  .galerie__picture--legend {
-    text-align: center;
-  }
+#modalGalerie {
+  display: none;
+  background: #901C1C;
 }
-@media (max-width: 750px) {
-  .photograph {
+
+@media (max-width: 770px) {
+  #galerie {
+    display: flex;
     flex-direction: column;
   }
-  .photograph__info--name {
-    padding-bottom: 1rem;
+
+  .galerie__picture--legend {
+    width: 26rem;
+    justify-content: space-between;
   }
-  .photograph__info--localisation {
-    padding-bottom: 1rem;
+
+  .encart {
+    font-size: 0.8rem;
+    padding: 1rem 1.5rem 1rem 1rem;
   }
-  .photograph__info--citation {
-    padding-bottom: 1rem;
+
+  .presentation__info--name {
+    font-size: 2rem;
+  }
+  .presentation__contact {
+    margin-right: 0.5rem;
   }
 }
 @media (max-width: 500px) {
+  .logo {
+    width: 7rem;
+  }
+
+  .presentation {
+    padding: 1rem;
+  }
+  .presentation__info {
+    line-height: 1.5rem;
+  }
+  .presentation__info--name {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+  }
+  .presentation__info--localisation {
+    font-size: 0.5rem;
+  }
+  .presentation__info--citation {
+    font-size: 0.5rem;
+  }
+  .presentation__contact {
+    height: 2rem;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    font-size: 0.5rem;
+  }
+  .presentation__photo {
+    height: 4rem;
+    width: 4rem;
+  }
+  .presentation__photo--img {
+    height: 4rem;
+    width: 4rem;
+  }
+
+  .tri__txt {
+    font-weight: bold;
+  }
+  .tri__btn--back {
+    display: none;
+  }
+  .tri__btn--menu {
+    height: 1rem;
+  }
+
+  .galerie__picture {
+    width: 100%;
+    margin: 0.5rem;
+  }
+
   .galerie__picture--modele {
-    height: 22rem;
+    height: 10rem;
+    width: 13rem;
+  }
+
+  .galerie__picture--modeleImg {
+    height: 9rem;
+    width: 13rem;
+  }
+
+  .galerie__picture--legend {
+    font-size: 0.8rem;
+    justify-content: space-around;
+  }
+
+  video {
+    height: 9rem;
+    width: 13rem;
+  }
+
+  .encart {
+    width: 30%;
+    font-size: 0.6rem;
+    padding: 1rem 1.5rem 1rem 1rem;
   }
 }/*# sourceMappingURL=photographer.css.map */

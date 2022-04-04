@@ -102,7 +102,7 @@ body{
     &__btn{
 
         display: flex;
-        flex-direction: column;
+        flex-direction: column; 
 
         &--back{
             display: none;
@@ -115,6 +115,8 @@ body{
             padding: 1rem;
             margin-left: 1rem;
             border-radius: 5px;
+            border-top: none;
+            cursor: pointer;
             }
 
         &--lien{
@@ -168,9 +170,10 @@ body{
     display: flex;
 }
 
-.fas{
+.heart{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    cursor: pointer;
 }
 
 video{
@@ -315,73 +318,154 @@ textarea{
 
 // ...................................................
 
-// Encart bas de page.................................
+// Modale Galerie.....................................
 
-// .encart{
-//     background: #D3573C;
-// }
-
-
+#modalGalerie{
+    display: none;
+    background: #901C1C;
+}
 
 // RESPONSIVE.........................................
 
-@media (max-width: 1350px){
 
-    .galerie{
-       flex-direction: column;
-       text-align: center;
-    
-        &__picture{
-            
-            margin-bottom: 2rem;
+@media (max-width: 770px){
 
-            &--modele{
-                height: 30rem;
-                width: 30rem;
-            }
-    
-            &--legend{
-               text-align: center;
-            }
-        }
+    #galerie{
+        display: flex;
+        flex-direction: column;
     }
-}
 
-@media (max-width: 750px){
+    .galerie__picture--legend{
+        width: 26rem;
+        justify-content:space-between;
+    }
 
-        .photograph{
-            flex-direction: column;
+    .encart{
+        font-size: 0.8rem;
+        padding: 1rem 1.5rem 1rem 1rem;
+    }
 
-            &__info{
-        
-                &--name{
-                   padding-bottom: 1rem;
-                }
-        
-                &--localisation{
-                    padding-bottom: 1rem;
-                }
-        
-                &--citation{
-                    padding-bottom: 1rem;
-                }
+    .presentation{
+
+        &__info{
+               
+            &--name{
+                font-size: 2rem;
             }
+    
         }
     
+        &__contact{
+            margin-right: 0.5rem;
+        }
+    
+    }
+    
+
+    
 }
+
+
 
 @media (max-width: 500px){
 
-    .galerie{
-     
-         &__picture{
+    .logo{
+        width: 7rem;
+    }
 
-             &--modele{
-                 height: 22rem;
-                //  width: 22rem;
-             }
-     
-         }
-     }
+    .presentation{
+
+        padding: 1rem;
+    
+        &__info{
+    
+            line-height: 1.5rem;
+            
+            &--name{
+                font-size: 1.5rem;
+                padding-bottom: 1rem;
+            }
+    
+            &--localisation{
+                font-size: 0.5rem;
+            }
+
+            &--citation{
+                font-size: 0.5rem;
+            }
+        }
+    
+        &__contact{
+            height: 2rem;
+            padding: 0.5rem;
+            margin-right: 0.5rem;
+            font-size: 0.5rem;
+        }
+    
+        &__photo{
+    
+            // border: solid 2px fuchsia;
+            height: 4rem;
+            width: 4rem;
+            
+            &--img{
+                height: 4rem;
+                width: 4rem;
+            }
+        }
+    
+    }
+
+    .tri{
+
+    
+        &__txt{
+            font-weight: bold;
+        }
+    
+        &__btn{
+      
+            &--back{
+                display: none;
+            }
+    
+            &--menu{
+                height: 1rem;
+            }        
+        }
+    }
+
+    .galerie__picture{
+        width: 100%;
+        margin: 0.5rem;
+        
+    }
+
+    .galerie__picture--modele{
+        height: 10rem;
+        width: 13rem;
+    }
+
+    .galerie__picture--modeleImg{ 
+        height: 9rem;
+        width: 13rem;
+    }
+
+    .galerie__picture--legend{
+        font-size: 0.8rem;
+        justify-content:space-around;
+    }
+
+    video{
+        height: 9rem;
+        width: 13rem;
+    }
+    
+
+    .encart{
+        width: 30%;
+        font-size: 0.6rem;
+        padding: 1rem 1.5rem 1rem 1rem;
+    }
 
 }
