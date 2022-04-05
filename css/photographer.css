@@ -227,6 +227,16 @@ textarea {
 #modalGalerie {
   display: none;
   background: #901C1C;
+  border: solid 2px black;
+  width: 50%;
+  height: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.modalGalerie__iconeClose {
+  padding-left: 42rem;
 }
 
 @media (max-width: 770px) {

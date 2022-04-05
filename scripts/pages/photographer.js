@@ -186,21 +186,47 @@ fetch("../../data/photographers.json")
               photoLegendLikes.appendChild(photoLegendIcone);            
             }
 
+            // Tri en fonction des parametres de l'image.......
+
+            const menuPop = document.querySelector('.menuPop');
+
+            menuPop.addEventListener('click', triByPop);
+
+            function triByPop(){
+              console.log(data.media[index].likes);
+            }
+
+            const menuDate = document.querySelector('.menuDate');
+
+            menuDate.addEventListener('click', triByDate);
+
+            function triByDate(){
+              console.log(data.media[index].date);
+            }
+
+            const menuTitre = document.querySelector('.menuTitre');
+
+            menuTitre.addEventListener('click', triByTitre);
+
+            function triByTitre(){
+              console.log(data.media[index].title);
+            }
+
          }
         
     }
 
 
-    // Encart de bas de page
+    // Encart de bas de page..........
+
     const totalChiffre = document.getElementsByClassName('encart__total--chiffre');
     totalChiffre[0].textContent = totalLikes;
 
 
 
-    // Incrémentation des likes
+    // Incrémentation des likes.........
 
 
-    // const totalLike = document.getElementsByClassName('encart__total--chiffre');
     var els = document.getElementsByClassName('heart');
 
     Array.prototype.forEach.call(els, function(els){
@@ -218,41 +244,63 @@ fetch("../../data/photographers.json")
         listChild[i].textContent = addLikePlus;
 
         // compte total addLikePlus
+ 
+        const totalChiffre2 = document.getElementsByClassName('encart__total--chiffre');
+        const initTotalLike = totalChiffre2[0].textContent;
+        const addLikeTotal = parseInt(initTotalLike) + 1;
+        totalChiffre2[0].textContent = addLikeTotal;
 
-        // const getLikeTotal = totalChiffre.textContent;
-        const addLikeTotal = parseInt(totalLikes) + 1;
-        totalChiffre[i].textContent = addLikeTotal;
 
-        console.log(addLikeTotal);
+        console.log(totalChiffre[0]);
+        
       }
     }
 
     });
 
+  
     });  
 
-      // const menuDate = document.getElementsByClassName('menuDate');
+    // Ouverture de la modale de galerie..........
 
-      // menuDate.addEventListener('click', triByDate);
-      // function triByDate(){
-      //   console.log(data.media[index].date);
-      // }
+    const modalGalerie = document.getElementById('modalGalerie');
+    const modalGaleriePhoto = document.getElementsByClassName('galerie__picture--modeleImg');
+
+    const ModalGalerieContenu = document.createElement('img');
+    ModalGalerieContenu.setAttribute('src',`./assets/images/${product_name}/${data.media[index].image}`);
+    ModalGalerieContenu.className = 'modalGalerie__contenu';
+    modalGalerie.appendChild(ModalGalerieContenu);
+    
+
+   
+
+    Array.prototype.forEach.call(modalGaleriePhoto, function(modalGaleriePhoto){
+      modalGaleriePhoto.addEventListener("click", modalGalerieOn);
+    });
+
+    function modalGalerieOn(){
+    modalGalerie.style.display = 'block';
+    }
 
 
-      // const modalGalerie = document.getElementById('modalGalerie');
-      // const modalGaleriePhoto = document.getElementsByClassName('galerie__picture--modeleImg');
-      
+    // Fermeture de la modale de galerie..........
 
-      // modalGaleriePhoto.addEventListener("click", modalGalerieOn);
-
-      // function modalGalerieOn(){
-      //   modalGalerie.style.display = 'block';
-      // }
+    const closeModalGalerie = document.querySelector(".modalGalerie__iconeClose");
+   
+    closeModalGalerie.addEventListener("click", modalGalerieOff);
+  
+  
+    function modalGalerieOff(){
+      modalGalerie.style.display = "none";
+    }
 
 
   });
 
   
+
+
+
   // Bouton de tri.................................................
 
 
@@ -276,8 +324,6 @@ fetch("../../data/photographers.json")
   function menuTriClose(){
     menuTri[0].style.display = "none";
   }
-
-
 
 
 
