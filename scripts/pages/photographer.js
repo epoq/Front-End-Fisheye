@@ -267,20 +267,19 @@ fetch("../../data/photographers.json")
     // Ouverture de la modale de galerie..........
 
     const modalGalerie = document.getElementById('modalGalerie');
-    const modalGaleriePhoto = document.getElementsByClassName(modalGaleriePhoto.dataset.id);
+    const modalGaleriePhoto = document.getElementsByClassName('galerie__picture--modeleImg');
 
-    // const ModalGalerieContenu = document.getElementsByClassName('modalGalerie__contenu');
-    // ModalGalerieContenu.setAttribute('src',`./assets/images/${product_name}/${data.media[index].image}`);
+
     
- 
     Array.prototype.forEach.call(modalGaleriePhoto, function(modalGaleriePhoto){
-      modalGaleriePhoto.addEventListener("click", () => modalGalerieOn(galeriePictureModelImg.dataset.id));    
+      modalGaleriePhoto.addEventListener("click", () => modalGalerieOn(modalGaleriePhoto.dataset.id));  
     });
 
     function modalGalerieOn(id){
       modalGalerie.style.display = 'block';
       const big = document.createElement('img');
-      big.setAttribute('src', `./assets/images/${product_name}/${data.media[index].image}`);
+      big.setAttribute('class', 'modalGalerie__big');
+      big.setAttribute('src', `./assets/images/${product_name}/${id}`);
       modalGalerie.appendChild(big);
     }
 

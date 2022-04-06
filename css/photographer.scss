@@ -322,7 +322,7 @@ textarea{
 
 #modalGalerie{
     display: none;
-    background: #901C1C;
+    background: #525252;
     border: solid 2px black;
     width: 50%;
     height: 50%;
@@ -333,8 +333,14 @@ textarea{
 
 .modalGalerie__iconeClose{
     padding-left: 42rem;
+    border: black;
 }
 
+.modalGalerie__big{
+    object-fit: cover;   
+    height: 18rem;
+    width: 26rem;
+}
 
 
 
