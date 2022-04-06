@@ -160,6 +160,7 @@ fetch("../../data/photographers.json")
   
               const galeriePictureModelImg = document.createElement('img');
               galeriePictureModelImg.setAttribute('src',`./assets/images/${product_name}/${data.media[index].image}`);
+              galeriePictureModelImg.dataset.id = data.media[index].image;
               galeriePictureModelImg.className = 'galerie__picture--modeleImg';
               galeriePictureModel.appendChild(galeriePictureModelImg);
 
@@ -266,18 +267,21 @@ fetch("../../data/photographers.json")
     // Ouverture de la modale de galerie..........
 
     const modalGalerie = document.getElementById('modalGalerie');
-    const modalGaleriePhoto = document.getElementsByClassName('galerie__picture--modeleImg');
+    const modalGaleriePhoto = document.getElementsByClassName(modalGaleriePhoto.dataset.id);
 
     // const ModalGalerieContenu = document.getElementsByClassName('modalGalerie__contenu');
     // ModalGalerieContenu.setAttribute('src',`./assets/images/${product_name}/${data.media[index].image}`);
     
  
     Array.prototype.forEach.call(modalGaleriePhoto, function(modalGaleriePhoto){
-      modalGaleriePhoto.addEventListener("click", modalGalerieOn);    
+      modalGaleriePhoto.addEventListener("click", () => modalGalerieOn(galeriePictureModelImg.dataset.id));    
     });
 
-    function modalGalerieOn(){
-    modalGalerie.style.display = 'block';
+    function modalGalerieOn(id){
+      modalGalerie.style.display = 'block';
+      const big = document.createElement('img');
+      big.setAttribute('src', `./assets/images/${product_name}/${data.media[index].image}`);
+      modalGalerie.appendChild(big);
     }
 
 
