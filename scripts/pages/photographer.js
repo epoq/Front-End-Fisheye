@@ -212,6 +212,8 @@ fetch("../../data/photographers.json")
               console.log(data.media[index].title);
             }
 
+            // const dates_photos = 
+
          }
         
     }
@@ -266,16 +268,12 @@ fetch("../../data/photographers.json")
     const modalGalerie = document.getElementById('modalGalerie');
     const modalGaleriePhoto = document.getElementsByClassName('galerie__picture--modeleImg');
 
-    const ModalGalerieContenu = document.createElement('img');
-    ModalGalerieContenu.setAttribute('src',`./assets/images/${product_name}/${data.media[index].image}`);
-    ModalGalerieContenu.className = 'modalGalerie__contenu';
-    modalGalerie.appendChild(ModalGalerieContenu);
+    // const ModalGalerieContenu = document.getElementsByClassName('modalGalerie__contenu');
+    // ModalGalerieContenu.setAttribute('src',`./assets/images/${product_name}/${data.media[index].image}`);
     
-
-   
-
+ 
     Array.prototype.forEach.call(modalGaleriePhoto, function(modalGaleriePhoto){
-      modalGaleriePhoto.addEventListener("click", modalGalerieOn);
+      modalGaleriePhoto.addEventListener("click", modalGalerieOn);    
     });
 
     function modalGalerieOn(){
