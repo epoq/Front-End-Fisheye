@@ -226,18 +226,36 @@ textarea {
 
 #modalGalerie {
   display: none;
-  background: #525252;
+  background: #FAFAFA;
   border: solid 2px black;
   width: 50%;
   height: 50%;
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .modalGalerie__defilement {
   display: flex;
   justify-content: space-around;
+}
+
+.modalGalerie__fleche {
+  position: relative;
+}
+.modalGalerie__fleche--icone {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: black;
+}
+.modalGalerie__fleche--iconeLeft {
+  left: 0%;
+}
+.modalGalerie__fleche--iconeRight {
+  right: 0%;
 }
 
 .modalGalerie__defilement--big {
@@ -250,9 +268,12 @@ textarea {
   width: 26rem;
 }
 
-.modalGalerie__defilement--iconeClose {
-  padding-left: 42rem;
-  border: black;
+.modalGalerie__iconeClose {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: black;
+  font-size: 30px;
 }
 
 @media (max-width: 770px) {

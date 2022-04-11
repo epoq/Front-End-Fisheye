@@ -190,32 +190,30 @@ fetch("../../data/photographers.json")
             // Tri en fonction des parametres de l'image.......
 
             const menuPop = document.querySelector('.menuPop');
-
             menuPop.addEventListener('click', triByPop);
-
             function triByPop(){
-              // console.log(data.media[index].likes);
+              const pop_photos = [data.media[index].likes];
+              pop_photos.sort();
+              console.log(pop_photos);
             }
 
             const menuDate = document.querySelector('.menuDate');
-
             menuDate.addEventListener('click', triByDate);
-
             function triByDate(){
-              // console.log(data.media[index].date);
+              const dates_photos = [data.media[index].date];
+              dates_photos.sort();
+              console.log(dates_photos);
             }
 
             const menuTitre = document.querySelector('.menuTitre');
-
             menuTitre.addEventListener('click', triByTitre);
-
             function triByTitre(){
-              // console.log(data.media[index].title);
+              const titre_photos = [data.media[index].title];
+              titre_photos.sort();
+              console.log(titre_photos);
             }
 
-            // const dates_photos = [data.media[index].date];
-            // dates_photos.sort();
-            // console.log(dates_photos);
+            
 
          }
         
@@ -281,18 +279,22 @@ fetch("../../data/photographers.json")
 
 
     function modalGalerieOn(id){
+      console.log(id);
       modalGalerie.style.display = 'block';
       const big = document.createElement('img');
       big.setAttribute('class', 'modalGalerie__defilement--big');
-      big.setAttribute('src', `./assets/images/${product_name}/${id}`);   
+      big.setAttribute('src', `./assets/images/${product_name}/${id}`);
+      modalGalerieDefilement[0].innerHTML = '';   
       modalGalerieDefilement[0].appendChild(big);
-      modalGalerie[0].appendChild(modalGalerieDefilement);
+      modalGalerie.appendChild(modalGalerieDefilement);
     }
+
+
 
 
     // Fermeture de la modale de galerie..........
 
-    const closeModalGalerie = document.querySelector(".modalGalerie__defilement--iconeClose");
+    const closeModalGalerie = document.querySelector(".modalGalerie__iconeClose");
    
     closeModalGalerie.addEventListener("click", modalGalerieOff);
   
