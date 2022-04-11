@@ -331,17 +331,24 @@ textarea{
     left: 0;
 }
 
-.modalGalerie__iconeClose{
-    padding-left: 42rem;
-    border: black;
+.modalGalerie__defilement{
+    display: flex;
+    justify-content: space-around;
 }
 
-.modalGalerie__big{
-    object-fit: cover;   
+.modalGalerie__defilement--big{
+    object-fit: cover; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;  
     height: 18rem;
     width: 26rem;
 }
 
+.modalGalerie__defilement--iconeClose{
+    padding-left: 42rem;
+    border: black;
+}
 
 
 
