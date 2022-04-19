@@ -97,6 +97,8 @@ fetch("../../data/photographers.json")
   fetch("../../data/photographers.json")
   .then((res) => res.json())
   .then((data) => {
+    let ensemblePhotos = [];
+  
     let totalLikes = 0;
     for (let index = 0; index < data.media.length; index++) {
 
@@ -121,6 +123,8 @@ fetch("../../data/photographers.json")
               var galeriePictureModelVideo = document.createElement('video');
               galeriePictureModelVideo.setAttribute('role','button');
               galeriePictureModelVideo.setAttribute('controls','controls');
+              galeriePictureModelVideo.dataset.id = data.media[index].video;
+              galeriePictureModelVideo.setAttribute('class', 'galerie__picture--modeleVideo');
               var galeriePictureModelVideoSrc = document.createElement('source');
               galeriePictureModelVideoSrc.setAttribute('src',`./assets/images/${product_name}/${data.media[index].video}`);
               galeriePictureModel.appendChild(galeriePictureModelVideo);
@@ -213,8 +217,97 @@ fetch("../../data/photographers.json")
               console.log(titre_photos);
             }
 
-            
 
+        // Modale de défilement de la galerie...........................................
+
+            const modalGalerie = document.getElementById('modalGalerie');
+            const modalGalerieDefilement = document.getElementsByClassName('modalGalerie__defilement');
+            const modalGaleriePhoto = document.getElementsByClassName('galerie__picture--modeleImg');
+            const modalGalerieVideo = document.getElementsByClassName('galerie__picture--modeleVideo');
+        
+        
+        
+            if(data.media[index].image){
+                Array.prototype.forEach.call(modalGaleriePhoto, function(modalGaleriePhoto){
+                modalGaleriePhoto.addEventListener("click", () => modalGalerieOn(modalGaleriePhoto.dataset.id));  
+                });
+            }
+        
+            if(data.media[index].video){
+                Array.prototype.forEach.call(modalGalerieVideo, function(modalGalerieVideo){
+                modalGalerieVideo.addEventListener("click", () => modalGalerieOn(modalGalerieVideo.dataset.id));  
+                });
+            }
+        
+        
+            function modalGalerieOn(id){
+              console.log(id);
+              modalGalerie.style.display = 'block';
+        
+                if(data.media[index].image){
+                const big = document.createElement('img');
+                big.setAttribute('class', 'modalGalerie__defilement--big');
+                big.setAttribute('src', `./assets/images/${product_name}/${id}`);
+                modalGalerieDefilement[0].innerHTML = '';   
+                modalGalerieDefilement[0].appendChild(big);
+                modalGalerie[0].appendChild(modalGalerieDefilement);
+                
+              }
+        
+              if(data.media[index].video){
+                const bigvideo = document.createElement('video');
+                bigvideo.setAttribute('class', 'modalGalerie__defilement--bigvideo');
+                bigvideo.setAttribute('src', `./assets/images/${product_name}/${id}`);
+                bigvideo.setAttribute('role','button');
+                bigvideo.setAttribute('controls','controls');                
+                modalGalerieDefilement[0].innerHTML = '';   
+                modalGalerieDefilement[0].appendChild(bigvideo);
+                modalGalerie[0].appendChild(modalGalerieDefilement);
+              }
+            
+              
+            }
+
+          // Fermeture de la modale de galerie..........
+
+              const closeModalGalerie = document.querySelector(".modalGalerie__iconeClose");
+   
+              closeModalGalerie.addEventListener("click", modalGalerieOff);
+  
+  
+              function modalGalerieOff(){
+              modalGalerie.style.display = "none";
+              }
+        
+          // Défilement au clic..............
+              if(data.media[index].image){
+              ensemblePhotos.push(data.media[index].image);
+              }
+
+              if(data.media[index].video){
+              ensemblePhotos.push(data.media[index].video);  
+              }
+              console.log(ensemblePhotos);
+
+              const left = document.querySelector('.modalGalerie__fleche--iconeLeft');
+              const right = document.querySelector('.modalGalerie__fleche--iconeRight');
+              
+              left.addEventListener('click', slidePhoto(-1));
+              right.addEventListener('click', slidePhoto(1));
+              
+              var numero = 0;
+
+              function slidePhoto(sens) {
+                numero = numero + sens;
+                console.log(numero);
+                if (numero < 0)
+                    numero = ensemblePhotos.length -1;
+
+                if (numero > ensemblePhotos.length -1)
+                    numero = 0;
+
+                document.getElementsByClassName('modalGalerie__defilement--big').src = ensemblePhotos[numero];
+              }
          }
         
     }
@@ -264,48 +357,10 @@ fetch("../../data/photographers.json")
   
     });  
 
-    // Ouverture de la modale de galerie..........
-
-    const modalGalerie = document.getElementById('modalGalerie');
-    const modalGalerieDefilement = document.getElementsByClassName('modalGalerie__defilement');
-    const modalGaleriePhoto = document.getElementsByClassName('galerie__picture--modeleImg');
-
-
-    
-    Array.prototype.forEach.call(modalGaleriePhoto, function(modalGaleriePhoto){
-      modalGaleriePhoto.addEventListener("click", () => modalGalerieOn(modalGaleriePhoto.dataset.id));  
-    });
-
-
-
-    function modalGalerieOn(id){
-      console.log(id);
-      modalGalerie.style.display = 'block';
-      const big = document.createElement('img');
-      big.setAttribute('class', 'modalGalerie__defilement--big');
-      big.setAttribute('src', `./assets/images/${product_name}/${id}`);
-      modalGalerieDefilement[0].innerHTML = '';   
-      modalGalerieDefilement[0].appendChild(big);
-      modalGalerie.appendChild(modalGalerieDefilement);
-    }
-
-
-
-
-    // Fermeture de la modale de galerie..........
-
-    const closeModalGalerie = document.querySelector(".modalGalerie__iconeClose");
-   
-    closeModalGalerie.addEventListener("click", modalGalerieOff);
-  
-  
-    function modalGalerieOff(){
-      modalGalerie.style.display = "none";
-    }
-
 
   });
 
+      
   
 
 
@@ -333,6 +388,12 @@ fetch("../../data/photographers.json")
   function menuTriClose(){
     menuTri[0].style.display = "none";
   }
+
+
+
+
+   
+  
 
 
 
