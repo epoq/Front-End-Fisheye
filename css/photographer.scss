@@ -316,6 +316,20 @@ textarea{
 }
 
 
+#success{
+    display: none;
+    background: $colour-secondary;
+    color: black;
+    font-size: 2rem;
+    position: fixed;
+    top: 0;
+    left: 30%;
+    width: auto;
+    height: 10rem;
+    padding: 3rem 1rem 2rem 1rem;
+
+}
+
 // ...................................................
 
 // Modale Galerie.....................................

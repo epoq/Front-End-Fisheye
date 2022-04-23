@@ -64,10 +64,15 @@ fetch("../../data/photographers.json")
   const modal = document.getElementById("contact_modal");
   const closeBtn = document.querySelector(".modal__entete--icone");
   const contactBtn = document.querySelector(".presentation__contact");
+  // sélection du paragraphe "merci"
+  const submitBtn = document.querySelector('.modal__formulaire--bouton');
+  const txtValid = document.getElementById("success"); 
   
   
   contactBtn.addEventListener("click", modalOpen);
   closeBtn.addEventListener("click", modalClose);
+  submitBtn.addEventListener("click", txtValidAppear);
+  
   
   
   // Fonction pour ouvrir la modale
@@ -79,6 +84,13 @@ fetch("../../data/photographers.json")
   function modalClose(){
       modal.style.display = "none";
   }
+
+  // Fonction qui fait apparaitre le txt de validation
+  function txtValidAppear() {
+  event.preventDefault();
+  modal.style.display = "none";
+  txtValid.style.display = "block";    
+}
 
 
 
@@ -280,6 +292,7 @@ fetch("../../data/photographers.json")
               }
         
           // Défilement au clic..............
+
               if(data.media[index].image){
               ensemblePhotos.push(data.media[index].image);
               }
@@ -287,10 +300,12 @@ fetch("../../data/photographers.json")
               if(data.media[index].video){
               ensemblePhotos.push(data.media[index].video);  
               }
-              console.log(ensemblePhotos);
+
 
               const left = document.querySelector('.modalGalerie__fleche--iconeLeft');
               const right = document.querySelector('.modalGalerie__fleche--iconeRight');
+              const big = document.getElementsByClassName('modalGalerie__defilement--big');
+              const bigvideo = document.getElementsByClassName('modalGalerie__defilement--bigvideo');
               
               left.addEventListener('click', slidePhoto(-1));
               right.addEventListener('click', slidePhoto(1));
@@ -299,14 +314,20 @@ fetch("../../data/photographers.json")
 
               function slidePhoto(sens) {
                 numero = numero + sens;
-                console.log(numero);
-                if (numero < 0)
-                    numero = ensemblePhotos.length -1;
+                
+                if(sens>0) numero += 1;
+                if(sens<0) numero -= 1;
+                if(numero<0) numero = ensemblePhotos.length - 1;
 
-                if (numero > ensemblePhotos.length -1)
-                    numero = 0;
+                // if (numero < 0)
+                //     numero = ensemblePhotos.length -1;
 
-                document.getElementsByClassName('modalGalerie__defilement--big').src = ensemblePhotos[numero];
+                // if (numero > ensemblePhotos.length -1)
+                //     numero = 0;
+
+                    big.src = ensemblePhotos[numero];
+                    bigvideo.src = ensemblePhotos[numero];
+                  // document.getElementsByClassName('modalGalerie__defilement--big').src = ensemblePhotos[numero];
               }
          }
         

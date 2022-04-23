@@ -130,28 +130,40 @@
         <input type="text" id="prenom">	
 			</div>
 
+      <p class="txtError" id="firstValid">Le format du prénom doit être valide.</p>
+
       <div class="modal__formulaire--item">
 				<label for="nom">Nom</label>
         <input type="text" id="nom">	
 			</div>
+
+      <p class="txtError" id="lastValid">Le format du nom doit être valide.</p>
 
       <div class="modal__formulaire--item">
 				<label for="email">Email</label>
         <input type="email" id="email">	
 			</div>
 
+      <p class="txtError" id="mailValid">Le format de l'adresse electronique doit être valide.</p>
+
       <div class="modal__formulaire--item">
 				<label for="message">Votre message</label>
         <textarea id="message" cols="30" rows="10"></textarea>
 			</div>
 
+      <p class="txtError" id="messageValid">Le message doit contenir au moins 2 caractères.</p>
+
       <input class="modal__formulaire--bouton" type="submit" value="Envoyer">
 
 		</form>
 
+    
+
 	</div>
 		
 </div>
+
+<p class="valid" id="success">Merci, votre formulaire a été envoyé</p>
 
 <!-- ........................................................ -->
 
