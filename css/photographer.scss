@@ -317,6 +317,9 @@ textarea{
 
 .txtError{
     display: none;
+    background: $colour-primary;
+    color: black;
+    font-weight: bold;
 }
 
 #success{

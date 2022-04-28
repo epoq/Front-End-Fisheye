@@ -64,6 +64,7 @@ fetch("../../data/photographers.json")
   const modal = document.getElementById("contact_modal");
   const closeBtn = document.querySelector(".modal__entete--icone");
   const contactBtn = document.querySelector(".presentation__contact");
+  
   // sélection du paragraphe "merci"
   const submitBtn = document.querySelector('.modal__formulaire--bouton');
   const txtValid = document.getElementById("success"); 
@@ -71,7 +72,7 @@ fetch("../../data/photographers.json")
   
   contactBtn.addEventListener("click", modalOpen);
   closeBtn.addEventListener("click", modalClose);
-  submitBtn.addEventListener("click", txtValidAppear);
+  submitBtn.addEventListener("click", validate);
   
   
   
@@ -86,8 +87,7 @@ fetch("../../data/photographers.json")
   }
 
   // Fonction qui fait apparaitre le txt de validation
-  function txtValidAppear(event) {
-  event.preventDefault();
+  function txtValidAppear() {
   modal.style.display = "none";
   txtValid.style.display = "block";    
 }
@@ -95,47 +95,48 @@ fetch("../../data/photographers.json")
 
 // Fonction de vérification du formulaire
 
-// function validate(event) {
-//   event.preventDefault()
+function validate(event) {
+  event.preventDefault()
+  console.log('test');
 
-//   const firstName = document.getElementById("prenom");
-//   const firstValid = document.getElementById("firstValid");
+  const firstName = document.getElementById("prenom");
+  const firstValid = document.getElementById("firstValid");
 
-//   const lastName = document.getElementById("nom");
-//   const lastValid = document.getElementById("lastValid");
+  const lastName = document.getElementById("nom");
+  const lastValid = document.getElementById("lastValid");
 
-//   const mail = document.getElementById("email");
-//   const mailValid = document.getElementById("mailValid");
+  const mail = document.getElementById("email");
+  const mailValid = document.getElementById("mailValid");
 
 
-//   let isValid = true;
-//   firstValid.style.display = "none";
-//   lastValid.style.display = "none"; 
-//   mailValid.style.display = "none";
+  let isValid = true;
+  firstValid.style.display = "none";
+  lastValid.style.display = "none"; 
+  mailValid.style.display = "none";
 
 
   // Vérification Prénom
-  // if (firstName.value.match(/^[A-zéèê'-]{2,}$/)===null){               
-  //   firstValid.style.display = "block";
-  //   isValid = false;
-  // }
+  if (firstName.value.match(/^[A-zéèê'-]{2,}$/)===null){               
+    firstValid.style.display = "block";
+    isValid = false;
+  }
   
   // Vérification Nom
-  // if(lastName.value.match(/^[A-zéèê'-]{2,}$/)===null){                 
-  //   lastValid.style.display = "block";
-  //   isValid = false;
-  // }
+  if(lastName.value.match(/^[A-zéèê'-]{2,}$/)===null){                 
+    lastValid.style.display = "block";
+    isValid = false;
+  }
   
   // Vérification email
-  // if(mail.value.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)=== null){        
-  //   mailValid.style.display = "block";
-  //   isValid = false;
-  // }
+  if(mail.value.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)=== null){        
+    mailValid.style.display = "block";
+    isValid = false;
+  }
 
-//   if(isValid){
-//     txtValidAppear();
-//   }
-// }
+  if(isValid){
+    txtValidAppear();
+  }
+}
 
 
 

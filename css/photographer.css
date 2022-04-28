@@ -226,6 +226,9 @@ textarea {
 
 .txtError {
   display: none;
+  background: #901C1C;
+  color: black;
+  font-weight: bold;
 }
 
 #success {
