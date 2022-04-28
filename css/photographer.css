@@ -224,6 +224,10 @@ textarea {
   border-radius: 5px;
 }
 
+.txtError {
+  display: none;
+}
+
 #success {
   display: none;
   background: #DB8876;

@@ -86,13 +86,56 @@ fetch("../../data/photographers.json")
   }
 
   // Fonction qui fait apparaitre le txt de validation
-  function txtValidAppear() {
+  function txtValidAppear(event) {
   event.preventDefault();
   modal.style.display = "none";
   txtValid.style.display = "block";    
 }
 
 
+// Fonction de vérification du formulaire
+
+// function validate(event) {
+//   event.preventDefault()
+
+//   const firstName = document.getElementById("prenom");
+//   const firstValid = document.getElementById("firstValid");
+
+//   const lastName = document.getElementById("nom");
+//   const lastValid = document.getElementById("lastValid");
+
+//   const mail = document.getElementById("email");
+//   const mailValid = document.getElementById("mailValid");
+
+
+//   let isValid = true;
+//   firstValid.style.display = "none";
+//   lastValid.style.display = "none"; 
+//   mailValid.style.display = "none";
+
+
+  // Vérification Prénom
+  // if (firstName.value.match(/^[A-zéèê'-]{2,}$/)===null){               
+  //   firstValid.style.display = "block";
+  //   isValid = false;
+  // }
+  
+  // Vérification Nom
+  // if(lastName.value.match(/^[A-zéèê'-]{2,}$/)===null){                 
+  //   lastValid.style.display = "block";
+  //   isValid = false;
+  // }
+  
+  // Vérification email
+  // if(mail.value.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)=== null){        
+  //   mailValid.style.display = "block";
+  //   isValid = false;
+  // }
+
+//   if(isValid){
+//     txtValidAppear();
+//   }
+// }
 
 
 
@@ -207,26 +250,29 @@ fetch("../../data/photographers.json")
 
             const menuPop = document.querySelector('.menuPop');
             menuPop.addEventListener('click', triByPop);
+
             function triByPop(){
-              const pop_photos = [data.media[index].likes];
-              pop_photos.sort();
-              console.log(pop_photos);
+              var pop1 = [data.media[index].likes];
+              var pop2 = pop1.sort();
+              console.log(pop2);
             }
 
             const menuDate = document.querySelector('.menuDate');
             menuDate.addEventListener('click', triByDate);
+
             function triByDate(){
-              const dates_photos = [data.media[index].date];
-              dates_photos.sort();
-              console.log(dates_photos);
+              var date1 = [data.media[index].date];
+              var date2 = date1.sort();
+              console.log(date2);
             }
 
             const menuTitre = document.querySelector('.menuTitre');
             menuTitre.addEventListener('click', triByTitre);
+
             function triByTitre(){
-              const titre_photos = [data.media[index].title];
-              titre_photos.sort();
-              console.log(titre_photos);
+              var titre1 = [data.media[index].title];
+              var titre2 = titre1.sort();
+              console.log(titre2);
             }
 
 
@@ -241,7 +287,8 @@ fetch("../../data/photographers.json")
         
             if(data.media[index].image){
                 Array.prototype.forEach.call(modalGaleriePhoto, function(modalGaleriePhoto){
-                modalGaleriePhoto.addEventListener("click", () => modalGalerieOn(modalGaleriePhoto.dataset.id));  
+                modalGaleriePhoto.addEventListener("click", () => modalGalerieOn(modalGaleriePhoto.dataset.id)); 
+                // console.log(modalGaleriePhoto.dataset.id); 
                 });
             }
         
@@ -255,6 +302,8 @@ fetch("../../data/photographers.json")
             function modalGalerieOn(id){
               console.log(id);
               modalGalerie.style.display = 'block';
+              // console.log(typeof modalGalerieDefilement);
+              // console.log(typeof modalGalerieDefilement[0]);
         
                 if(data.media[index].image){
                 const big = document.createElement('img');
@@ -262,7 +311,7 @@ fetch("../../data/photographers.json")
                 big.setAttribute('src', `./assets/images/${product_name}/${id}`);
                 modalGalerieDefilement[0].innerHTML = '';   
                 modalGalerieDefilement[0].appendChild(big);
-                modalGalerie[0].appendChild(modalGalerieDefilement);
+                modalGalerie.appendChild(modalGalerieDefilement[0]);
                 
               }
         
@@ -274,10 +323,9 @@ fetch("../../data/photographers.json")
                 bigvideo.setAttribute('controls','controls');                
                 modalGalerieDefilement[0].innerHTML = '';   
                 modalGalerieDefilement[0].appendChild(bigvideo);
-                modalGalerie[0].appendChild(modalGalerieDefilement);
+                modalGalerie.appendChild(modalGalerieDefilement[0]);
               }
-            
-              
+          
             }
 
           // Fermeture de la modale de galerie..........
@@ -304,11 +352,11 @@ fetch("../../data/photographers.json")
 
               const left = document.querySelector('.modalGalerie__fleche--iconeLeft');
               const right = document.querySelector('.modalGalerie__fleche--iconeRight');
-              const big = document.getElementsByClassName('modalGalerie__defilement--big');
-              const bigvideo = document.getElementsByClassName('modalGalerie__defilement--bigvideo');
+              // const big = document.getElementsByClassName('modalGalerie__defilement--big');
+              // const bigvideo = document.getElementsByClassName('modalGalerie__defilement--bigvideo');
               
-              left.addEventListener('click', slidePhoto(-1));
-              right.addEventListener('click', slidePhoto(1));
+              left.addEventListener('click', slidePhotoLeft);
+              right.addEventListener('click', () => slidePhoto(1));
               
               var numero = 0;
 
@@ -325,9 +373,30 @@ fetch("../../data/photographers.json")
                 // if (numero > ensemblePhotos.length -1)
                 //     numero = 0;
 
-                    big.src = ensemblePhotos[numero];
-                    bigvideo.src = ensemblePhotos[numero];
-                  // document.getElementsByClassName('modalGalerie__defilement--big').src = ensemblePhotos[numero];
+                    // big.src = ensemblePhotos[numero];
+                    // bigvideo.src = ensemblePhotos[numero];
+                  document.getElementsByClassName('modalGalerie__defilement--big').src = ensemblePhotos[numero];
+              }
+
+              function slidePhotoLeft() {
+
+                var sens = -1;
+                numero = numero + sens;
+
+                
+                if(sens>0) numero += 1;
+                if(sens<0) numero -= 1;
+                if(numero<0) numero = ensemblePhotos.length - 1;
+
+                // if (numero < 0)
+                //     numero = ensemblePhotos.length -1;
+
+                // if (numero > ensemblePhotos.length -1)
+                //     numero = 0;
+
+                    // big.src = ensemblePhotos[numero];
+                    // bigvideo.src = ensemblePhotos[numero];
+                  document.getElementsByClassName('modalGalerie__defilement--big').src = ensemblePhotos[numero];
               }
          }
         
