@@ -301,7 +301,7 @@ function validate(event) {
         
         
             function modalGalerieOn(id){
-              console.log(id);
+              // console.log(id);
               modalGalerie.style.display = 'block';
               // console.log(typeof modalGalerieDefilement);
               // console.log(typeof modalGalerieDefilement[0]);
@@ -309,7 +309,7 @@ function validate(event) {
                 if(data.media[index].image){
                 const big = document.createElement('img');
                 big.setAttribute('class', 'modalGalerie__defilement--big');
-                big.setAttribute('src', `./assets/images/${product_name}/${id}`);
+                // big.setAttribute('src', `./assets/images/${product_name}/${id}`);
                 modalGalerieDefilement[0].innerHTML = '';   
                 modalGalerieDefilement[0].appendChild(big);
                 modalGalerie.appendChild(modalGalerieDefilement[0]);
@@ -319,9 +319,9 @@ function validate(event) {
               if(data.media[index].video){
                 const bigvideo = document.createElement('video');
                 bigvideo.setAttribute('class', 'modalGalerie__defilement--bigvideo');
-                bigvideo.setAttribute('src', `./assets/images/${product_name}/${id}`);
-                bigvideo.setAttribute('role','button');
-                bigvideo.setAttribute('controls','controls');                
+                // bigvideo.setAttribute('src', `./assets/images/${product_name}/${id}`);
+                // bigvideo.setAttribute('role','button');
+                // bigvideo.setAttribute('controls','controls');                
                 modalGalerieDefilement[0].innerHTML = '';   
                 modalGalerieDefilement[0].appendChild(bigvideo);
                 modalGalerie.appendChild(modalGalerieDefilement[0]);
@@ -342,31 +342,31 @@ function validate(event) {
         
           // Défilement au clic..............
 
-              if(data.media[index].image){
-              ensemblePhotos.push(data.media[index].image);
-              }
+              // if(data.media[index].image){
+              // ensemblePhotos.push(data.media[index].image);
+              // }
 
-              if(data.media[index].video){
-              ensemblePhotos.push(data.media[index].video);  
-              }
+              // if(data.media[index].video){
+              // ensemblePhotos.push(data.media[index].video);  
+              // }
 
 
-              const left = document.querySelector('.modalGalerie__fleche--iconeLeft');
-              const right = document.querySelector('.modalGalerie__fleche--iconeRight');
+              // const left = document.querySelector('.modalGalerie__fleche--iconeLeft');
+              // const right = document.querySelector('.modalGalerie__fleche--iconeRight');
               // const big = document.getElementsByClassName('modalGalerie__defilement--big');
               // const bigvideo = document.getElementsByClassName('modalGalerie__defilement--bigvideo');
               
-              left.addEventListener('click', slidePhotoLeft);
-              right.addEventListener('click', () => slidePhoto(1));
+              // left.addEventListener('click', slidePhotoLeft);
+              // right.addEventListener('click', () => slidePhoto(1));
               
-              var numero = 0;
+              // var numero = 0;
 
-              function slidePhoto(sens) {
-                numero = numero + sens;
+              // function slidePhoto(sens) {
+              //   numero = numero + sens;
                 
-                if(sens>0) numero += 1;
-                if(sens<0) numero -= 1;
-                if(numero<0) numero = ensemblePhotos.length - 1;
+              //   if(sens>0) numero += 1;
+              //   if(sens<0) numero -= 1;
+              //   if(numero<0) numero = ensemblePhotos.length - 1;
 
                 // if (numero < 0)
                 //     numero = ensemblePhotos.length -1;
@@ -376,18 +376,18 @@ function validate(event) {
 
                     // big.src = ensemblePhotos[numero];
                     // bigvideo.src = ensemblePhotos[numero];
-                  document.getElementsByClassName('modalGalerie__defilement--big').src = ensemblePhotos[numero];
-              }
+                  // document.getElementsByClassName('modalGalerie__defilement--big').src = ensemblePhotos[numero];
+              // }
 
-              function slidePhotoLeft() {
+              // function slidePhotoLeft() {
 
-                var sens = -1;
-                numero = numero + sens;
+              //   var sens = -1;
+              //   numero = numero + sens;
 
                 
-                if(sens>0) numero += 1;
-                if(sens<0) numero -= 1;
-                if(numero<0) numero = ensemblePhotos.length - 1;
+              //   if(sens>0) numero += 1;
+              //   if(sens<0) numero -= 1;
+              //   if(numero<0) numero = ensemblePhotos.length - 1;
 
                 // if (numero < 0)
                 //     numero = ensemblePhotos.length -1;
@@ -397,8 +397,8 @@ function validate(event) {
 
                     // big.src = ensemblePhotos[numero];
                     // bigvideo.src = ensemblePhotos[numero];
-                  document.getElementsByClassName('modalGalerie__defilement--big').src = ensemblePhotos[numero];
-              }
+              //     document.getElementsByClassName('modalGalerie__defilement--big').src = ensemblePhotos[numero];
+              // }
          }
         
     }
@@ -448,10 +448,64 @@ function validate(event) {
   
     });  
 
+    // Défilement de la galerie......................
+    const modalImg = document.getElementsByClassName('modalGalerie__defilement--big');
+    let imgTags = document.querySelectorAll('.galerie__picture--modeleImg');
+    let tabImg = [];
+
+    // Récuperation des images dans un tableau
+
+    imgTags.forEach(function (imgTag){
+      imgTag.addEventListener('click', (event) => {
+        event.preventDefault();
+        tabImg = [];
+        tabImg.push(imgTag.getAttribute('src'));
+        console.log(imgTag.getAttribute('src'));
+        modalImg[0].setAttribute('src', imgTag.getAttribute('src'));
+
+        imgTags.forEach(function (item){
+          if(imgTag.getAttribute('src') != item.getAttribute('src')){
+            tabImg.push(item.getAttribute('src'));
+          }
+        });  
+      });
+    }); 
+
+    // Contrôle Left / Right
+
+    const btnLeft = document.querySelectorAll('.modalGalerie__fleche--iconeLeft');
+    const btnRight = document.querySelectorAll('.modalGalerie__fleche--iconeRight');
+    
+
+    var position = 0;
+
+    btnLeft.forEach(function (left){
+      left.addEventListener('click', (event) => {
+        event.preventDefault();
+        if(position == 0){
+          position = tabImg.length;
+        } else{
+          position = position - 1;
+        }
+        modalImg[0].setAttribute('src', tabImg[position]);
+      });
+    });
+
+    btnRight.forEach(function (right){
+      right.addEventListener('click', (event) => {
+        event.preventDefault();
+        if(position == tabImg.length){
+          position = 0;
+        } else{
+          position = position + 1;
+        }
+        modalImg[0].setAttribute('src', tabImg[position]);
+        console.log(tabImg);
+      });
+    });
 
   });
 
-      
   
 
 
