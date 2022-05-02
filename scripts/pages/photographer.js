@@ -10,9 +10,6 @@ const product_id = urlParams.get("id");
 const product_name = urlParams.get("name").split(' ')[0].replace('-', ' ');
 
 
-// console.log(product_name);
-
-
 // Encadré de présentation......................................................................
 
 
@@ -27,10 +24,8 @@ const nameModale = document.getElementsByClassName('name_modale');
 fetch("../../data/photographers.json")
   .then((res) => res.json())
   .then((data) => {
-    // console.log(data.photographers);
+
     for (let index = 0; index < data.photographers.length; index++) {
-        // const element = data.photographers[index].name;
-        // console.log(data.photographers[index].id);
         
         if(product_id == data.photographers[index].id){
 
@@ -45,8 +40,6 @@ fetch("../../data/photographers.json")
             photographerImg.className = ('presentation__photo--img');
             photographerImg.setAttribute('alt', data.photographers[index].name);
             portraitPhotographer[0].appendChild(photographerImg);
-
-            
          }
     }
 
@@ -68,8 +61,7 @@ fetch("../../data/photographers.json")
   // sélection du paragraphe "merci"
   const submitBtn = document.querySelector('.modal__formulaire--bouton');
   const txtValid = document.getElementById("success"); 
-  
-  
+    
   contactBtn.addEventListener("click", modalOpen);
   closeBtn.addEventListener("click", modalClose);
   submitBtn.addEventListener("click", validate);
@@ -139,7 +131,6 @@ function validate(event) {
 }
 
 
-
   // Galerie Photos.......................................................
 
 
@@ -160,9 +151,7 @@ function validate(event) {
 
         
         if(product_id == data.media[index].photographerId){
-            // console.log(data.media[index])
-          
-            
+                     
             totalLikes = totalLikes + data.media[index].likes; 
 
             
@@ -247,49 +236,19 @@ function validate(event) {
               photoLegendLikes.appendChild(photoLegendIcone);            
             }
 
-            // Tri en fonction des parametres de l'image.......
-
-            const menuPop = document.querySelector('.menuPop');
-            menuPop.addEventListener('click', triByPop);
-
-            function triByPop(){
-              var pop1 = [data.media[index].likes];
-              var pop2 = pop1.sort();
-              console.log(pop2);
-            }
-
-            const menuDate = document.querySelector('.menuDate');
-            menuDate.addEventListener('click', triByDate);
-
-            function triByDate(){
-              var date1 = [data.media[index].date];
-              var date2 = date1.sort();
-              console.log(date2);
-            }
-
-            const menuTitre = document.querySelector('.menuTitre');
-            menuTitre.addEventListener('click', triByTitre);
-
-            function triByTitre(){
-              var titre1 = [data.media[index].title];
-              var titre2 = titre1.sort();
-              console.log(titre2);
-            }
+            
 
 
-        // Modale de défilement de la galerie...........................................
+// Modale de défilement de la galerie...........................................
 
             const modalGalerie = document.getElementById('modalGalerie');
             const modalGalerieDefilement = document.getElementsByClassName('modalGalerie__defilement');
             const modalGaleriePhoto = document.getElementsByClassName('galerie__picture--modeleImg');
             const modalGalerieVideo = document.getElementsByClassName('galerie__picture--modeleVideo');
-        
-        
-        
+               
             if(data.media[index].image){
                 Array.prototype.forEach.call(modalGaleriePhoto, function(modalGaleriePhoto){
                 modalGaleriePhoto.addEventListener("click", () => modalGalerieOn(modalGaleriePhoto.dataset.id)); 
-                // console.log(modalGaleriePhoto.dataset.id); 
                 });
             }
         
@@ -301,15 +260,11 @@ function validate(event) {
         
         
             function modalGalerieOn(id){
-              // console.log(id);
               modalGalerie.style.display = 'block';
-              // console.log(typeof modalGalerieDefilement);
-              // console.log(typeof modalGalerieDefilement[0]);
         
                 if(data.media[index].image){
                 const big = document.createElement('img');
                 big.setAttribute('class', 'modalGalerie__defilement--big');
-                // big.setAttribute('src', `./assets/images/${product_name}/${id}`);
                 modalGalerieDefilement[0].innerHTML = '';   
                 modalGalerieDefilement[0].appendChild(big);
                 modalGalerie.appendChild(modalGalerieDefilement[0]);
@@ -318,10 +273,7 @@ function validate(event) {
         
               if(data.media[index].video){
                 const bigvideo = document.createElement('video');
-                bigvideo.setAttribute('class', 'modalGalerie__defilement--bigvideo');
-                // bigvideo.setAttribute('src', `./assets/images/${product_name}/${id}`);
-                // bigvideo.setAttribute('role','button');
-                // bigvideo.setAttribute('controls','controls');                
+                bigvideo.setAttribute('class', 'modalGalerie__defilement--bigvideo');             
                 modalGalerieDefilement[0].innerHTML = '';   
                 modalGalerieDefilement[0].appendChild(bigvideo);
                 modalGalerie.appendChild(modalGalerieDefilement[0]);
@@ -329,89 +281,20 @@ function validate(event) {
           
             }
 
-          // Fermeture de la modale de galerie..........
+// Fermeture de la modale de galerie..........
 
               const closeModalGalerie = document.querySelector(".modalGalerie__iconeClose");
    
               closeModalGalerie.addEventListener("click", modalGalerieOff);
-  
-  
+    
               function modalGalerieOff(){
               modalGalerie.style.display = "none";
-              }
-        
-          // Défilement au clic..............
-
-              // if(data.media[index].image){
-              // ensemblePhotos.push(data.media[index].image);
-              // }
-
-              // if(data.media[index].video){
-              // ensemblePhotos.push(data.media[index].video);  
-              // }
-
-
-              // const left = document.querySelector('.modalGalerie__fleche--iconeLeft');
-              // const right = document.querySelector('.modalGalerie__fleche--iconeRight');
-              // const big = document.getElementsByClassName('modalGalerie__defilement--big');
-              // const bigvideo = document.getElementsByClassName('modalGalerie__defilement--bigvideo');
-              
-              // left.addEventListener('click', slidePhotoLeft);
-              // right.addEventListener('click', () => slidePhoto(1));
-              
-              // var numero = 0;
-
-              // function slidePhoto(sens) {
-              //   numero = numero + sens;
-                
-              //   if(sens>0) numero += 1;
-              //   if(sens<0) numero -= 1;
-              //   if(numero<0) numero = ensemblePhotos.length - 1;
-
-                // if (numero < 0)
-                //     numero = ensemblePhotos.length -1;
-
-                // if (numero > ensemblePhotos.length -1)
-                //     numero = 0;
-
-                    // big.src = ensemblePhotos[numero];
-                    // bigvideo.src = ensemblePhotos[numero];
-                  // document.getElementsByClassName('modalGalerie__defilement--big').src = ensemblePhotos[numero];
-              // }
-
-              // function slidePhotoLeft() {
-
-              //   var sens = -1;
-              //   numero = numero + sens;
-
-                
-              //   if(sens>0) numero += 1;
-              //   if(sens<0) numero -= 1;
-              //   if(numero<0) numero = ensemblePhotos.length - 1;
-
-                // if (numero < 0)
-                //     numero = ensemblePhotos.length -1;
-
-                // if (numero > ensemblePhotos.length -1)
-                //     numero = 0;
-
-                    // big.src = ensemblePhotos[numero];
-                    // bigvideo.src = ensemblePhotos[numero];
-              //     document.getElementsByClassName('modalGalerie__defilement--big').src = ensemblePhotos[numero];
-              // }
-         }
+              }            
+        }
         
     }
 
-
-    // Encart de bas de page..........
-
-    const totalChiffre = document.getElementsByClassName('encart__total--chiffre');
-    totalChiffre[0].textContent = totalLikes;
-
-
-
-    // Incrémentation des likes.........
+// Incrémentation des likes.........
 
 
     var els = document.getElementsByClassName('heart');
@@ -446,14 +329,23 @@ function validate(event) {
     });
 
   
-    });  
+    }); 
+    
+// Encart de bas de page..........
 
-    // Défilement de la galerie......................
+    const totalChiffre = document.getElementsByClassName('encart__total--chiffre');
+    totalChiffre[0].textContent = totalLikes;
+
+
+
+// Défilement de la galerie......................
     const modalImg = document.getElementsByClassName('modalGalerie__defilement--big');
     let imgTags = document.querySelectorAll('.galerie__picture--modeleImg');
     let tabImg = [];
 
-    // Récuperation des images dans un tableau
+
+
+        // Récuperation des images dans un tableau
 
     imgTags.forEach(function (imgTag){
       imgTag.addEventListener('click', (event) => {
@@ -471,7 +363,7 @@ function validate(event) {
       });
     }); 
 
-    // Contrôle Left / Right
+        // Contrôle Left / Right
 
     const btnLeft = document.querySelectorAll('.modalGalerie__fleche--iconeLeft');
     const btnRight = document.querySelectorAll('.modalGalerie__fleche--iconeRight');
@@ -504,26 +396,63 @@ function validate(event) {
       });
     });
 
+
+// Tri en fonction des parametres de l'image.......
+
+    const menuPop = document.querySelector('.menuPop');
+    menuPop.addEventListener('click', triByPop);
+
+    function triByPop(){
+      var pop1 = [data.media[index].likes];
+      var pop2 = pop1.sort();
+      console.log(pop2);
+    }
+
+    const menuDate = document.querySelector('.menuDate');
+    menuDate.addEventListener('click', triByDate);
+
+    function triByDate(){
+      var date1 = [data.media[index].date];
+      var date2 = date1.sort();
+      console.log(date2);
+    }
+
+    // const menuTitre = document.querySelector('.menuTitre');
+    // menuTitre.addEventListener('click', triByTitre);
+
+    // function triByTitre(){
+    //   var titre1 = [data.media[index].title];
+    //   var titre2 = titre1.sort();
+    //   console.log(titre2);
+    // }
+
+    // function compareDataMediaStr(m1, m2){
+    //   if (m1.title < m2.title)
+    //   return -1;
+    //   if (m1.title > m2.title)
+    //   return 1;
+    //   return 0;
+    // }
+
+    // data.media.sort(compareDataMediaStr);
+    // console.log(data.media.sort());
+    // console.log(data.media.sort(compareDataMediaStr));
+
   });
 
-  
 
-
-
-  // Bouton de tri.................................................
-
+// Bouton de tri.................................................
 
   const menuTri = document.getElementsByClassName('tri__btn--back');
   const divTri = document.querySelector(".tri__btn");
   const btnTri = document.querySelector(".btn_tri");
-  
-  
-  
+   
   btnTri.addEventListener("mouseenter", menuTriOpen);
   divTri.addEventListener("mouseleave", menuTriClose);
  
  
-  // Fonction pour ouvrir le menu de tri
+// Fonction pour ouvrir le menu de tri...........................
+
   function menuTriOpen(){
     menuTri[0].style.display = "block";
     menuTri[0].style.display = "flex";
