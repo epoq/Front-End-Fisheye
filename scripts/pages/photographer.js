@@ -144,73 +144,52 @@ function validate(event) {
   fetch("../../data/photographers.json")
   .then((res) => res.json())
   .then((data) => {
-    let ensemblePhotos = [];
-  
+    let ensemblePhotos = []; 
     let totalLikes = 0;
+  
+  function sortData(critere1){
+    if (critere1 == 'TriDate'){
+      return data.media.sort(compareDateMediaStr);
+    }
+    if (critere1 == 'TriName'){
+      return data.media.sort(compareTitleMediaStr);
+    }
+    if (critere1 == 'TriLikes'){
+      return data.media.sort(compareLikesMediaStr);
+    }
+    return data.media;
+  }
+   
+  function affichagePhotos(sortCriteria){
+
+    var result = sortData(sortCriteria);
+
+    galerie.innerHTML = '';
+
     for (let index = 0; index < data.media.length; index++) {
 
         
         if(product_id == data.media[index].photographerId){
                      
             totalLikes = totalLikes + data.media[index].likes; 
-
             
             if(data.media[index].video){
-        
-              var galeriePicture = document.createElement('div');
-              galeriePicture.setAttribute('class','galerie__picture');
-              galerie.appendChild(galeriePicture);
-  
-              var galeriePictureModel = document.createElement('div');
-              galeriePictureModel.setAttribute('class','galerie__picture--modele');  
-              galeriePicture.appendChild(galeriePictureModel);
-  
-              var galeriePictureModelVideo = document.createElement('video');
-              galeriePictureModelVideo.setAttribute('role','button');
-              galeriePictureModelVideo.setAttribute('controls','controls');
-              galeriePictureModelVideo.dataset.id = data.media[index].video;
-              galeriePictureModelVideo.setAttribute('class', 'galerie__picture--modeleVideo');
-              var galeriePictureModelVideoSrc = document.createElement('source');
-              galeriePictureModelVideoSrc.setAttribute('src',`./assets/images/${product_name}/${data.media[index].video}`);
-              galeriePictureModel.appendChild(galeriePictureModelVideo);
-              galeriePictureModelVideo.appendChild(galeriePictureModelVideoSrc);
 
-              const photoLegend = document.createElement('div');
-              photoLegend.setAttribute('class', 'galerie__picture--legend');
-              galeriePicture.appendChild(photoLegend);
-
-              const photoLegendTitle = document.createElement('p');
-              photoLegendTitle.innerHTML = data.media[index].title;
-              photoLegend.appendChild(photoLegendTitle);
-
-              const photoLegendLikes = document.createElement('div');
-              photoLegendLikes.setAttribute('class', 'galerie__picture--likes');
-              photoLegend.appendChild(photoLegendLikes);
-
-              const photoLegendNumber = document.createElement('p'); 
-              photoLegendNumber.setAttribute('class', 'galerie__picture--number');        
-              photoLegendNumber.innerHTML = data.media[index].likes;
-              photoLegendLikes.appendChild(photoLegendNumber);
-
-              const photoLegendIcone = document.createElement('i');
-              photoLegendIcone.setAttribute('class', 'fas fa-heart heart');
-              photoLegendLikes.appendChild(photoLegendIcone);            
-
-            }
-
-            if(data.media[index].image){
               const galeriePicture = document.createElement('div');
               galeriePicture.setAttribute('class','galerie__picture');
+              galeriePicture.setAttribute('class','galerie__video');
               galerie.appendChild(galeriePicture);
-  
+
               const galeriePictureModel = document.createElement('div');
               galeriePictureModel.setAttribute('class','galerie__picture--modele');
               galeriePicture.appendChild(galeriePictureModel);
-  
+
               const galeriePictureModelImg = document.createElement('img');
-              galeriePictureModelImg.setAttribute('src',`./assets/images/${product_name}/${data.media[index].image}`);
-              galeriePictureModelImg.dataset.id = data.media[index].image;
-              galeriePictureModelImg.className = 'galerie__picture--modeleImg';
+              galeriePictureModelImg.setAttribute('media','video');
+              galeriePictureModelImg.setAttribute('src',`./assets/images/miniature_video.jpg`);
+              galeriePictureModelImg.setAttribute('video',`./assets/images/${product_name}/${data.media[index].video}`);
+              galeriePictureModelImg.dataset.id = data.media[index].video;
+              galeriePictureModelImg.setAttribute('class','galerie__picture--modeleImg');
               galeriePictureModel.appendChild(galeriePictureModelImg);
 
               const photoLegend = document.createElement('div');
@@ -234,191 +213,330 @@ function validate(event) {
               const photoLegendIcone = document.createElement('i');
               photoLegendIcone.setAttribute('class', 'fas fa-heart heart');
               photoLegendLikes.appendChild(photoLegendIcone);            
+
             }
 
-            
-
-
-// Modale de défilement de la galerie...........................................
-
-            const modalGalerie = document.getElementById('modalGalerie');
-            const modalGalerieDefilement = document.getElementsByClassName('modalGalerie__defilement');
-            const modalGaleriePhoto = document.getElementsByClassName('galerie__picture--modeleImg');
-            const modalGalerieVideo = document.getElementsByClassName('galerie__picture--modeleVideo');
-               
             if(data.media[index].image){
-                Array.prototype.forEach.call(modalGaleriePhoto, function(modalGaleriePhoto){
-                modalGaleriePhoto.addEventListener("click", () => modalGalerieOn(modalGaleriePhoto.dataset.id)); 
-                });
-            }
-        
-            if(data.media[index].video){
-                Array.prototype.forEach.call(modalGalerieVideo, function(modalGalerieVideo){
-                modalGalerieVideo.addEventListener("click", () => modalGalerieOn(modalGalerieVideo.dataset.id));  
-                });
-            }
-        
-        
-            function modalGalerieOn(id){
-              modalGalerie.style.display = 'block';
-        
-                if(data.media[index].image){
-                const big = document.createElement('img');
-                big.setAttribute('class', 'modalGalerie__defilement--big');
-                modalGalerieDefilement[0].innerHTML = '';   
-                modalGalerieDefilement[0].appendChild(big);
-                modalGalerie.appendChild(modalGalerieDefilement[0]);
-                
-              }
-        
-              if(data.media[index].video){
-                const bigvideo = document.createElement('video');
-                bigvideo.setAttribute('class', 'modalGalerie__defilement--bigvideo');             
-                modalGalerieDefilement[0].innerHTML = '';   
-                modalGalerieDefilement[0].appendChild(bigvideo);
-                modalGalerie.appendChild(modalGalerieDefilement[0]);
-              }
-          
-            }
+              const galeriePicture = document.createElement('div');
+              galeriePicture.setAttribute('class','galerie__picture');
+              galerie.appendChild(galeriePicture);
+  
+              const galeriePictureModel = document.createElement('div');
+              galeriePictureModel.setAttribute('class','galerie__picture--modele');
+              galeriePicture.appendChild(galeriePictureModel);
+  
+              const galeriePictureModelImg = document.createElement('img');
+              galeriePictureModelImg.setAttribute('src',`./assets/images/${product_name}/${data.media[index].image}`);
+              galeriePictureModelImg.setAttribute('media','image');
+              galeriePictureModelImg.dataset.id = data.media[index].image;
+              galeriePictureModelImg.setAttribute('class','galerie__picture--modeleImg');
+              galeriePictureModel.appendChild(galeriePictureModelImg);
 
-// Fermeture de la modale de galerie..........
+              const photoLegend = document.createElement('div');
+              photoLegend.setAttribute('class', 'galerie__picture--legend');
+              galeriePicture.appendChild(photoLegend);
 
-              const closeModalGalerie = document.querySelector(".modalGalerie__iconeClose");
-   
-              closeModalGalerie.addEventListener("click", modalGalerieOff);
-    
-              function modalGalerieOff(){
-              modalGalerie.style.display = "none";
-              }            
+
+              const photoLegendTitle = document.createElement('p');
+              photoLegendTitle.innerHTML = data.media[index].title;
+              photoLegend.appendChild(photoLegendTitle);
+
+              const photoLegendLikes = document.createElement('div');
+              photoLegendLikes.setAttribute('class', 'galerie__picture--likes');
+              photoLegend.appendChild(photoLegendLikes);
+
+              const photoLegendNumber = document.createElement('p');
+              photoLegendNumber.setAttribute('class', 'galerie__picture--number');    
+              photoLegendNumber.setAttribute('likes', 0);        
+              photoLegendNumber.innerHTML = data.media[index].likes;
+              photoLegendLikes.appendChild(photoLegendNumber);
+
+              const photoLegendIcone = document.createElement('i');
+              photoLegendIcone.setAttribute('class', 'fas fa-heart heart');
+              photoLegendLikes.appendChild(photoLegendIcone);            
+            }
+     
         }
         
     }
 
-// Incrémentation des likes.........
+  }
+
+  affichagePhotos();
+
+  function affichagePhotoDate(){
+    affichagePhotos('TriDate');
+    defilementGalerie();
+    incrementationLikes();
+  }
+  const menuDate = document.querySelector('.menuDate');
+  menuDate.addEventListener('click', affichagePhotoDate);
 
 
-    var els = document.getElementsByClassName('heart');
+  function affichagePhotoTitre(){
+    affichagePhotos('TriName');
+    defilementGalerie();
+    incrementationLikes();
+  }
+  const menuTitre = document.querySelector('.menuTitre');
+  menuTitre.addEventListener('click', affichagePhotoTitre);
 
-    Array.prototype.forEach.call(els, function(els){
-    els.addEventListener('click', function() {
-    const listChild = els.closest('.galerie__picture--likes').children;
+
+  function affichagePhotoLikes(){
+    affichagePhotos('TriLikes');
+    defilementGalerie();
+    incrementationLikes();
+  }
+  const menuLikes = document.querySelector('.menuPop');
+  menuLikes.addEventListener('click',  affichagePhotoLikes);
 
 
-    for(var i = 0; i < listChild.length; i++) {
-      if(listChild[i].getAttribute('class') ==='galerie__picture--number'){
-        // obtenir les likes
-        const getLikeDefault = listChild[i].textContent;
-        // ajouter un like
-        const addLikePlus = parseInt(getLikeDefault) + 1;
-        // inserer un nouveau like
-        listChild[i].textContent = addLikePlus;
 
-        // compte total addLikePlus
+
+
+
+
+    // Incrémentation des likes.........
+
+    function incrementationLikes(){
+
+      var els = document.getElementsByClassName('heart');
+  
+        Array.prototype.forEach.call(els, function(els){
+        els.addEventListener('click', function() {
+            const listChild = els.closest('.galerie__picture--likes').children;
+    
+    
+            for(var i = 0; i < listChild.length; i++) {
+              if(listChild[i].getAttribute('class') ==='galerie__picture--number'){
+                
+                console.log(listChild[i].getAttribute('likes'));
+                // listChild[i].setAttribute('likes', '1');
+
+                if (parseInt(listChild[i].getAttribute('likes')) == 0){
+
+                  console.log('test0');
+
+                  // obtenir les likes
+                  const getLikeDefault = listChild[i].textContent;
+                  // ajouter un like
+                  const addLikePlus = parseInt(getLikeDefault) + 1;
+                  // inserer un nouveau like
+                  listChild[i].textContent = addLikePlus;
+          
+                  // compte total addLikePlus   
+                  const totalChiffre2 = document.getElementsByClassName('encart__total--chiffre');
+                  const initTotalLike = totalChiffre2[0].textContent;
+                  const addLikeTotal = parseInt(initTotalLike) + 1;
+                  totalChiffre2[0].textContent = addLikeTotal;
+
+                  listChild[i].setAttribute('likes', 1);
+
+                } else{
+                   // obtenir les likes
+                   const getLikeDefault = listChild[i].textContent;
+                   // ajouter un like
+                   const addLikePlus = parseInt(getLikeDefault) - 1;
+                   // inserer un nouveau like
+                   listChild[i].textContent = addLikePlus;               
+           
+                   // compte total addLikePlus   
+                   const totalChiffre2 = document.getElementsByClassName('encart__total--chiffre');
+                   const initTotalLike = totalChiffre2[0].textContent;
+                   const addLikeTotal = parseInt(initTotalLike) - 1;
+                   totalChiffre2[0].textContent = addLikeTotal;
  
-        const totalChiffre2 = document.getElementsByClassName('encart__total--chiffre');
-        const initTotalLike = totalChiffre2[0].textContent;
-        const addLikeTotal = parseInt(initTotalLike) + 1;
-        totalChiffre2[0].textContent = addLikeTotal;
+                   listChild[i].setAttribute('likes', 0);
+                }
+            
+              }
+            }
+    
+        });
+  
+    
+      }); 
+      
+      // Encart de bas de page..........
+  
+      const totalChiffre = document.getElementsByClassName('encart__total--chiffre');
+      totalChiffre[0].textContent = totalLikes;
 
+    }  
 
-        console.log(totalChiffre[0]);
-        
-      }
+    incrementationLikes();
+
+    // Défilement de la galerie......................
+
+    function defilementGalerie(){
+
+      
+      const modalGalerie = document.getElementById('modalGalerie');
+      const modalGalerieDefilement = document.getElementsByClassName('modalGalerie__defilement');
+      const modalGaleriePhoto = document.getElementsByClassName('galerie__picture--modeleImg');
+      const closeModalGalerie = document.querySelector(".modalGalerie__iconeClose");
+      const modalImg = document.getElementsByClassName('modalGalerie__defilement--big');
+      const modalVideo = document.getElementsByClassName('modalGalerie__defilement--bigvideo');
+      let imgTags = document.querySelectorAll('.galerie__picture--modeleImg');
+      let tabImg = [];
+  
+  
+          // Fermeture de la modale Galerie
+  
+      closeModalGalerie.addEventListener("click", modalGalerieOff);
+      
+      function modalGalerieOff(){
+      modalGalerie.style.display = "none";
+      }            
+  
+          // Récuperation des images dans un tableau
+  
+      imgTags.forEach(function (imgTag){
+        imgTag.addEventListener('click', (event) => {
+          event.preventDefault();
+          modalGalerie.style.display = 'block';
+          const big = document.createElement('img');
+          big.setAttribute('class', 'modalGalerie__defilement--big');
+          modalGalerieDefilement[0].innerHTML = '';   
+          modalGalerieDefilement[0].appendChild(big);
+          modalGalerie.appendChild(modalGalerieDefilement[0]); 
+  
+  
+          const bigvideo = document.createElement('video');
+          bigvideo.setAttribute('class', 'modalGalerie__defilement--bigvideo');
+          bigvideo.setAttribute('role','button');
+          bigvideo.setAttribute('controls','controls');
+          modalGalerieDefilement[0].appendChild(bigvideo);
+          modalGalerie.appendChild(modalGalerieDefilement[0]);                 
+            
+          console.log(imgTag);
+          tabImg = [];
+          let mediaCheck = imgTag.getAttribute('media');
+  
+          if(mediaCheck == 'image'){
+            modalVideo[0].style.display = 'none';
+            modalImg[0].style.display = 'block';
+            let srcMedia = imgTag.getAttribute('src');
+            tabImg.push(srcMedia + "..." + mediaCheck);  
+            let srcEnd = srcMedia.split('...')[0];
+            modalImg[0].setAttribute('src', srcEnd);  
+          }
+  
+          if(mediaCheck == 'video'){
+            modalImg[0].style.display = 'none';
+            modalVideo[0].style.display = 'block';
+            let srcMedia = imgTag.getAttribute('video');
+            tabImg.push(srcMedia + "..." + mediaCheck);
+            let srcEnd = srcMedia.split('...')[0];
+            modalVideo[0].setAttribute('src', srcEnd);    
+          }
+  
+         
+          
+  
+          imgTags.forEach(function (item){
+            let mediaCheckItem = item.getAttribute('media');
+            let srcMediaItemImage = item.getAttribute('src');
+            let srcMediaItemVideo = item.getAttribute('video');
+  
+            if(imgTag.getAttribute('src') != item.getAttribute('src')){
+  
+              if(mediaCheckItem == 'image'){
+                tabImg.push(srcMediaItemImage + "..." + mediaCheckItem);    
+              }
+      
+              if(mediaCheckItem == 'video'){
+                tabImg.push(srcMediaItemVideo + "..." + mediaCheckItem);    
+              }
+         
+            }
+          });  
+          console.log(tabImg);
+        });
+      }); 
+  
+  
+          // Contrôle Left / Right
+  
+      const btnLeft = document.querySelectorAll('.modalGalerie__fleche--iconeLeft');
+      const btnRight = document.querySelectorAll('.modalGalerie__fleche--iconeRight');
+      
+  
+      var position = 0;
+  
+      btnLeft.forEach(function (left){
+        left.addEventListener('click', (event) => {
+          event.preventDefault();
+          if(position == 0){
+            position = tabImg.length - 1;
+          } else{
+            position = position - 1;
+          }
+  
+          let mediaCheck = tabImg[position].split('...')[1];
+          let srcEnd = tabImg[position].split('...')[0];
+  
+          if(mediaCheck == 'image'){
+            modalVideo[0].style.display = 'none';
+            modalImg[0].style.display = 'block';
+            modalImg[0].setAttribute('src', srcEnd);  
+          }
+  
+          if(mediaCheck == 'video'){
+            modalImg[0].style.display = 'none';
+            modalVideo[0].style.display = 'block';
+            modalVideo[0].setAttribute('src', srcEnd);  
+          }
+  
+        });
+      });
+  
+      btnRight.forEach(function (right){
+        right.addEventListener('click', (event) => {
+          event.preventDefault();
+          if(position == tabImg.length){
+            position = 0;
+          } else{
+            position = position + 1;
+          }
+  
+          let mediaCheck = tabImg[position].split('...')[1];
+          let srcEnd = tabImg[position].split('...')[0];
+  
+          if(mediaCheck == 'image'){
+            modalVideo[0].style.display = 'none';
+            modalImg[0].style.display = 'block';
+            modalImg[0].setAttribute('src', srcEnd);  
+          }
+  
+          if(mediaCheck == 'video'){
+            modalImg[0].style.display = 'none';
+            modalVideo[0].style.display = 'block';
+            modalVideo[0].setAttribute('src', srcEnd);  
+          }
+        });
+      });
     }
 
-    });
+    defilementGalerie();
+
+
+
+    // Tri en fonction des parametres de l'image.......
 
   
-    }); 
-    
-// Encart de bas de page..........
+    // const menuDate = document.querySelector('.menuDate');
+    // menuDate.addEventListener('click', triByDate);
 
-    const totalChiffre = document.getElementsByClassName('encart__total--chiffre');
-    totalChiffre[0].textContent = totalLikes;
+    // function triByDate(){
+    //   var date1 = [data.media[index].date];
+    //   var date2 = date1.sort();
+    //   console.log(date2);
+    // }
 
-
-
-// Défilement de la galerie......................
-    const modalImg = document.getElementsByClassName('modalGalerie__defilement--big');
-    let imgTags = document.querySelectorAll('.galerie__picture--modeleImg');
-    let tabImg = [];
-
-
-
-        // Récuperation des images dans un tableau
-
-    imgTags.forEach(function (imgTag){
-      imgTag.addEventListener('click', (event) => {
-        event.preventDefault();
-        tabImg = [];
-        tabImg.push(imgTag.getAttribute('src'));
-        console.log(imgTag.getAttribute('src'));
-        modalImg[0].setAttribute('src', imgTag.getAttribute('src'));
-
-        imgTags.forEach(function (item){
-          if(imgTag.getAttribute('src') != item.getAttribute('src')){
-            tabImg.push(item.getAttribute('src'));
-          }
-        });  
-      });
-    }); 
-
-        // Contrôle Left / Right
-
-    const btnLeft = document.querySelectorAll('.modalGalerie__fleche--iconeLeft');
-    const btnRight = document.querySelectorAll('.modalGalerie__fleche--iconeRight');
-    
-
-    var position = 0;
-
-    btnLeft.forEach(function (left){
-      left.addEventListener('click', (event) => {
-        event.preventDefault();
-        if(position == 0){
-          position = tabImg.length;
-        } else{
-          position = position - 1;
-        }
-        modalImg[0].setAttribute('src', tabImg[position]);
-      });
-    });
-
-    btnRight.forEach(function (right){
-      right.addEventListener('click', (event) => {
-        event.preventDefault();
-        if(position == tabImg.length){
-          position = 0;
-        } else{
-          position = position + 1;
-        }
-        modalImg[0].setAttribute('src', tabImg[position]);
-        console.log(tabImg);
-      });
-    });
-
-
-// Tri en fonction des parametres de l'image.......
-
-    const menuPop = document.querySelector('.menuPop');
-    menuPop.addEventListener('click', triByPop);
-
-    function triByPop(){
-      var pop1 = [data.media[index].likes];
-      var pop2 = pop1.sort();
-      console.log(pop2);
-    }
-
-    const menuDate = document.querySelector('.menuDate');
-    menuDate.addEventListener('click', triByDate);
-
-    function triByDate(){
-      var date1 = [data.media[index].date];
-      var date2 = date1.sort();
-      console.log(date2);
-    }
-
+   
     // const menuTitre = document.querySelector('.menuTitre');
-    // menuTitre.addEventListener('click', triByTitre);
+    // menuTitre.addEventListener('click', );
 
     // function triByTitre(){
     //   var titre1 = [data.media[index].title];
@@ -426,14 +544,31 @@ function validate(event) {
     //   console.log(titre2);
     // }
 
-    // function compareDataMediaStr(m1, m2){
-    //   if (m1.title < m2.title)
-    //   return -1;
-    //   if (m1.title > m2.title)
-    //   return 1;
-    //   return 0;
-    // }
+    function compareLikesMediaStr(m1, m2){
+      if (m1.likes < m2.likes)
+      return -1;
+      if (m1.likes > m2.likes)
+      return 1;
+      return 0;
+    }
 
+    function compareDateMediaStr(m1, m2){
+      if (m1.date < m2.date)
+      return -1;
+      if (m1.date > m2.date)
+      return 1;
+      return 0;
+    }
+
+    function compareTitleMediaStr(m1, m2){
+      if (m1.title < m2.title)
+      return -1;
+      if (m1.title > m2.title)
+      return 1;
+      return 0;
+    }
+
+    
     // data.media.sort(compareDataMediaStr);
     // console.log(data.media.sort());
     // console.log(data.media.sort(compareDataMediaStr));
@@ -441,7 +576,8 @@ function validate(event) {
   });
 
 
-// Bouton de tri.................................................
+
+// // Bouton de tri.................................................
 
   const menuTri = document.getElementsByClassName('tri__btn--back');
   const divTri = document.querySelector(".tri__btn");
@@ -451,7 +587,7 @@ function validate(event) {
   divTri.addEventListener("mouseleave", menuTriClose);
  
  
-// Fonction pour ouvrir le menu de tri...........................
+// // Fonction pour ouvrir le menu de tri...........................
 
   function menuTriOpen(){
     menuTri[0].style.display = "block";
