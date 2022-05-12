@@ -141,7 +141,7 @@ function validate(event) {
 
   // Structure et récupération données photos/vidéos
 
-  fetch("../../data/photographers.json")
+  fetch("/data/photographers.json")
   .then((res) => res.json())
   .then((data) => {
     let ensemblePhotos = []; 
