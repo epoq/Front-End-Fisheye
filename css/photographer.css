@@ -305,8 +305,8 @@ textarea {
   position: absolute;
   top: 5px;
   right: 5px;
-  color: black;
-  font-size: 30px;
+  height: 3rem;
+  width: 3rem;
   cursor: pointer;
 }
 
