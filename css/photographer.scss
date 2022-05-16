@@ -119,6 +119,11 @@ body{
             cursor: pointer;
             }
 
+        &--menu:hover{
+            background: $colour-secondary;
+            font-size: 1rem;
+        }
+
         &--lien{
             color: white;
             text-decoration: none;

@@ -31,75 +31,75 @@
 
 <main id="main">
 
-  <!-- Partie présentation du photographe -->
+    <!-- Partie présentation du photographe -->
 
-  <div class="presentation">
+    <div class="presentation">
 
-    <div class="presentation__info">
-      <p class="presentation__info--name"></p>
-      <p class="presentation__info--localisation"></p>
-      <p class="presentation__info--citation"></p>
-    </div>
-
-    <button class="presentation__contact">Contactez-moi</button>
-
-    <div class="presentation__photo">
-      <!-- <img src="" alt="" class="presentation__photo--img"> -->
-    </div>
-
-  </div>
-
-
-
-  <!-- Partie bouton de tri -->
-
-  <div class="tri">
-
-    <p class="tri__txt">Trier par</p>
-
-      <div class="tri__btn">
-
-        <button class="tri__btn--menu btn_tri menuPop"><a href="#" class="tri__btn--lien">Popularité</a><i class="fas fa-solid fa-chevron-down"></i></button>
-
-        <div class="tri__btn--back">
-          <button class="tri__btn--menu menuDate"><a href="#" class="tri__btn--lien">Date</a></button>
-          <button class="tri__btn--menu menuTitre"><a href="#" class="tri__btn--lien">Titre</a></button>
-        </div>
-
-      </div>      
-    
-  </div>
-
-
-
-  <!-- Partie galerie photos -->
-
-
-  <div id="galerie">
-
-    <!-- <div class="galerie__picture">
-
-      <div class="galerie__picture--modele">
-
-      img = galerie__picture--modeleImg
-        
+      <div class="presentation__info">
+        <p class="presentation__info--name"></p>
+        <p class="presentation__info--localisation"></p>
+        <p class="presentation__info--citation"></p>
       </div>
 
-      <div class="galerie__picture--legend">
+      <button class="presentation__contact">Contactez-moi</button>
 
-        <p class="galerie__picture--title"></p>
-
-        <div class="galerie__picture--likes">
-          <p class="galerie__picture--number">122</p>
-          <i class="fas fa-heart">122</i>
-        </div>
-        
+      <div class="presentation__photo">
+        <!-- <img src="" alt="" class="presentation__photo--img"> -->
       </div>
-    
-    </div> -->
-    
 
-  </div>
+    </div>
+
+
+
+    <!-- Partie bouton de tri -->
+
+    <div class="tri">
+
+      <p class="tri__txt">Trier par</p>
+
+        <nav class="tri__btn" role="navigation" aria-label="menu de tri des photos">
+
+          <button class="tri__btn--menu btn_tri menuPop"><a href="#" class="tri__btn--lien">Popularité</a><i class="fas fa-solid fa-chevron-down"></i></button>
+
+          <div class="tri__btn--back">
+            <button class="tri__btn--menu menuDate"><a href="#" class="tri__btn--lien">Date</a></button>
+            <button class="tri__btn--menu menuTitre"><a href="#" class="tri__btn--lien">Titre</a></button>
+          </div>
+
+        </nav>      
+      
+    </div>
+
+
+
+    <!-- Partie galerie photos -->
+
+
+    <div id="galerie">
+
+      <!-- <div class="galerie__picture">
+
+        <div class="galerie__picture--modele">
+
+          img = galerie__picture--modeleImg
+          
+        </div>
+
+        <div class="galerie__picture--legend">
+
+          <p class="galerie__picture--title"></p>
+
+          <div class="galerie__picture--likes">
+            <p class="galerie__picture--number"></p>
+            <i class="fas fa-heart"></i>
+          </div>
+          
+        </div>
+      
+      </div> -->
+      
+
+    </div>
 
 </main>
 
@@ -108,11 +108,11 @@
 
 <!-- MODALE............................................... -->
 
-<div id="contact_modal">
+<aside id="contact_modal" aria-label="Formulaire de contact">
   
   <div class="modal">
 
-    <header class="modal__entete">
+    <header class="modal__entete" aria-label="En-tete du formulaire">
 
       <div class="modal__entete--text">
         <p>Contactez-moi</p>
@@ -158,8 +158,6 @@
 
 		</form>
 
-    
-
 	</div>
 		
 </div>
@@ -185,19 +183,23 @@
 
 <!-- Modale Galerie.............................................. -->
 
-<div id="modalGalerie">
+<aside id="modalGalerie" aria-label="Galerie photos">
 
   <!-- <img src="assets/icons/close.svg" class="modalGalerie__defilement--iconeClose"/> --> 
 
   <div class="modalGalerie__fleche">
-    <!-- <i aria-label= "fermer" class="fas fa-times modalGalerie__iconeClose"></i> -->
+
     <img aria-label= "fermer" src="assets/icons/fermer.png" class="modalGalerie__iconeClose" alt="icone de fermeture"/>
+
     <i class=" fas fa-solid fa-chevron-left modalGalerie__fleche--iconeLeft modalGalerie__fleche--icone"></i>
-      <div class="modalGalerie__defilement">
+      
+    <div class="modalGalerie__defilement">
       <!-- <img src="" alt="" class="modalGalerie__defilement--big"> -->
       <!-- <video src="" class="modalGalerie__defilement--bigvideo"></video> -->
-      </div>
+    </div>
+
     <i class="fas fa-solid fa-chevron-right modalGalerie__fleche--iconeRight modalGalerie__fleche--icone"></i>
+
   </div>
 
 </div>

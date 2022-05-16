@@ -85,6 +85,10 @@ body {
   border-top: none;
   cursor: pointer;
 }
+.tri__btn--menu:hover {
+  background: #DB8876;
+  font-size: 1rem;
+}
 .tri__btn--lien {
   color: white;
   text-decoration: none;
