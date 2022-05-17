@@ -6,7 +6,6 @@
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-console.log(urlParams);
 const product_id = urlParams.get("id");
 const product_name = urlParams.get("name").split(' ')[0].replace('-', ' ');
 

@@ -68,6 +68,10 @@ body{
         border-radius: 6px;
     }
 
+    &__contact:hover{
+        background: $colour-secondary;
+    }
+
     &__photo{
 
         // border: solid 2px fuchsia;
@@ -301,6 +305,7 @@ video{
                 font-size: 0.7rem;
                 cursor: pointer
             }
+
         }
 }
 

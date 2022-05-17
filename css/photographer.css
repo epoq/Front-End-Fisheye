@@ -45,6 +45,9 @@ body {
   font-size: 1rem;
   border-radius: 6px;
 }
+.presentation__contact:hover {
+  background: #DB8876;
+}
 .presentation__photo {
   height: 11rem;
   width: 11rem;
