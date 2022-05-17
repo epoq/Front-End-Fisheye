@@ -22,13 +22,14 @@ body{
     width: 14rem;
 }
 
-// ...................................................
-
 
 
 // MAIN...............................................
 
-.photograph{
+
+// Présentation...........................
+
+.presentation{
 
     // border: solid 2px red;
     background: #FAFAFA;
@@ -38,15 +39,18 @@ body{
     padding: 2rem;
 
     &__info{
+
+        line-height: 2.5rem;
         
         &--name{
             color: $colour-name;
             font-size: 3rem;
+            padding-bottom: 1rem;
         }
 
         &--localisation{
             color: $colour-primary;
-            font-size: 1rem;
+            font-size: 1.2rem;
         }
 
         &--citation{
@@ -65,6 +69,12 @@ body{
     }
 
     &__photo{
+
+        // border: solid 2px fuchsia;
+        height: 11rem;
+        width: 11rem;
+        object-fit: cover;
+        border-radius: 150px;
         
         &--img{
             height: 11rem;
@@ -76,10 +86,13 @@ body{
 
 }
 
+// Bouton de tri..................................
+
+
 .tri{
     // border: solid 2px blue;
     display: flex;
-    align-items: center;
+    justify-content: baseline;
     margin-top: 1rem;
 
     &__txt{
@@ -87,40 +100,142 @@ body{
     }
 
     &__btn{
-        background: $colour-primary;
-        color: white;
-        font-weight: bold;
-        height: 3rem;
-        padding: 1rem;
-        margin-left: 1rem;
-        border-radius: 5px;
+
+        display: flex;
+        flex-direction: column; 
+
+        &--back{
+            display: none;
+        }
+
+        &--menu{
+            background: $colour-primary;
+            font-weight: bold;
+            height: 3rem;
+            padding: 1rem;
+            margin-left: 1rem;
+            border-radius: 5px;
+            border-top: none;
+            cursor: pointer;
+            }
+
+        &--menu:hover{
+            background: $colour-secondary;
+            font-size: 1rem;
+        }
+
+        &--lien{
+            color: white;
+            text-decoration: none;
+        }      
     }
 }
 
-.galerie{
+// #tri__btn--back{
+//     display: flex;
+//     flex-direction: column;
+//     display: none;
+// }
+
+.fa-chevron-down{
+    color: #FAFAFA;
+}
+
+// Galerie photos.................................
+
+#galerie{
     // border: solid 2px fuchsia;
     display: flex;
     margin: 3rem 0rem 3rem 0rem;
-    justify-content: space-around;
-
-    &__picture{
-        
-        &--modele{
-            object-fit: cover;
-            height: 24rem;
-            width: 24rem;
-        }
-
-        &--legend{
-            display: flex;
-            justify-content: space-around;
-            font-size: 1rem;
-            color: $colour-primary;
-        }
-    }
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-// ...................................................
+.galerie__picture{
+    // border: solid 2px red;
+    width: 30%;
+    margin: 1rem;
+    
+}
+
+.galerie__picture--modeleImg{
+    object-fit: cover;   
+    height: 18rem;
+    width: 26rem;
+}
+
+.galerie__picture--legend{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    color: $colour-primary;
+}
+
+.galerie__picture--likes{
+    display: flex;
+}
+
+.heart{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    cursor: pointer;
+}
+
+video{
+    object-fit: cover;
+    height: 18rem;
+    width: 26rem;
+}
+
+// #galerie{
+//     border: solid 2px fuchsia;
+//     display: flex;
+//     margin: 3rem 0rem 3rem 0rem;
+//     justify-content: space-around;
+//     flex-wrap: wrap;
+
+//     &__picture{
+//         border: solid 2px red;
+//         width: 33%;
+
+//         &--modeleImg{
+//             object-fit: cover;
+//             height: 18rem;
+//             width: 18rem;
+//         }
+
+//         &--legend{
+//             display: flex;
+//             justify-content: space-around;
+//             font-size: 1rem;
+//             color: $colour-primary;
+//         }
+//     }
+// }
+
+
+
+
+// Encart...................................
+
+.encart{
+    background: $colour-secondary;
+    position: fixed;
+    width: 20%;
+    bottom: 0;
+    right: 0;
+    border-radius: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    margin-right: 1.5rem;
+
+        &__total{
+            display: flex;
+        }
+}
 
 
 
@@ -205,70 +320,242 @@ textarea{
     border-radius: 5px;
 }
 
+.txtError{
+    display: none;
+    background: $colour-primary;
+    color: black;
+    font-weight: bold;
+}
+
+#success{
+    display: none;
+    background: $colour-secondary;
+    color: black;
+    font-size: 2rem;
+    position: fixed;
+    top: 0;
+    left: 30%;
+    width: auto;
+    height: 10rem;
+    padding: 3rem 1rem 2rem 1rem;
+
+}
 
 // ...................................................
 
+// Modale Galerie.....................................
+
+#modalGalerie{
+    display: none;
+    background: #FAFAFA;
+    border: solid 2px black;
+    width: 70%;
+    height: 80%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modalGalerie__defilement{
+    display: flex;
+    justify-content: space-around;
+}
+
+.modalGalerie__fleche{
+
+    &--icone{
+        position: absolute;
+        top: 50%;
+        bottom: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 50px;
+        color: black;
+        cursor: pointer;
+    }
+
+    &--iconeLeft{
+        left: 4%;
+    }
+
+    &--iconeRight{
+        right: 4%;
+    }
+}
+
+.modalGalerie__defilement--big{
+    object-fit: cover; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;  
+    width: 20rem;
+    height: 35rem;
+}
+
+.modalGalerie__defilement--bigvideo{
+    object-fit: cover; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;  
+    width: 30rem;
+    height: 35rem;
+}
+
+.modalGalerie__iconeClose{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 3rem;
+    width: 3rem;
+    cursor: pointer;
+}
 
 
 // RESPONSIVE.........................................
 
-@media (max-width: 1350px){
 
-    .galerie{
-       flex-direction: column;
-       text-align: center;
-    
-        &__picture{
-            
-            margin-bottom: 2rem;
+@media (max-width: 770px){
 
-            &--modele{
-                height: 30rem;
-                width: 30rem;
-            }
-    
-            &--legend{
-               text-align: center;
-            }
-        }
+    #galerie{
+        display: flex;
+        flex-direction: column;
     }
-}
 
-@media (max-width: 750px){
+    .galerie__picture--legend{
+        width: 26rem;
+        justify-content:space-between;
+    }
 
-        .photograph{
-            flex-direction: column;
+    .encart{
+        font-size: 0.8rem;
+        padding: 1rem 1.5rem 1rem 1rem;
+    }
 
-            &__info{
-        
-                &--name{
-                   padding-bottom: 1rem;
-                }
-        
-                &--localisation{
-                    padding-bottom: 1rem;
-                }
-        
-                &--citation{
-                    padding-bottom: 1rem;
-                }
+    .presentation{
+
+        &__info{
+               
+            &--name{
+                font-size: 2rem;
             }
+    
         }
     
+        &__contact{
+            margin-right: 0.5rem;
+        }
+    
+    }
+    
+
+    
 }
+
+
 
 @media (max-width: 500px){
 
-    .galerie{
-     
-         &__picture{
+    .logo{
+        width: 7rem;
+    }
 
-             &--modele{
-                 height: 22rem;
-                //  width: 22rem;
-             }
-     
-         }
-     }
+    .presentation{
+
+        padding: 1rem;
+    
+        &__info{
+    
+            line-height: 1.5rem;
+            
+            &--name{
+                font-size: 1.5rem;
+                padding-bottom: 1rem;
+            }
+    
+            &--localisation{
+                font-size: 0.5rem;
+            }
+
+            &--citation{
+                font-size: 0.5rem;
+            }
+        }
+    
+        &__contact{
+            height: 2rem;
+            padding: 0.5rem;
+            margin-right: 0.5rem;
+            font-size: 0.5rem;
+        }
+    
+        &__photo{
+    
+            // border: solid 2px fuchsia;
+            height: 4rem;
+            width: 4rem;
+            
+            &--img{
+                height: 4rem;
+                width: 4rem;
+            }
+        }
+    
+    }
+
+    .tri{
+
+    
+        &__txt{
+            font-weight: bold;
+        }
+    
+        &__btn{
+      
+            &--back{
+                display: none;
+            }
+    
+            &--menu{
+                height: 1rem;
+            }        
+        }
+    }
+
+    .galerie__picture{
+        width: 100%;
+        margin: 0.5rem;
+        
+    }
+
+    .galerie__picture--modele{
+        height: 10rem;
+        width: 13rem;
+    }
+
+    .galerie__picture--modeleImg{ 
+        height: 9rem;
+        width: 13rem;
+    }
+
+    .galerie__picture--legend{
+        font-size: 0.8rem;
+        justify-content:space-around;
+    }
+
+    video{
+        height: 9rem;
+        width: 13rem;
+    }
+    
+
+    .encart{
+        width: 30%;
+        font-size: 0.6rem;
+        padding: 1rem 1.5rem 1rem 1rem;
+    }
 
 }

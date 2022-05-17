@@ -7,8 +7,8 @@
 body{
     font-family: 'DM', sans-serif;
     font-size: 0.85rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 h1{
@@ -47,10 +47,21 @@ header{
 
 // main..................................
 
+.photographer_section{
+    // border: 2px solid blueviolet;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
 .profil{
+    // border: 2px solid fuchsia;
     display: flex;
     flex-direction: column;
-    text-align: center;                ;
+    text-align: center;  
+    width: 30%;
+    padding-bottom: 2rem;              ;
 
     &__icone{
         // border: solid 2px black;
@@ -70,7 +81,7 @@ header{
     &__txt{
         vertical-align: middle;
         
-        &--titre{
+        &--name{
             font-size: 2rem;
             color: #D3573C;
         }
@@ -85,23 +96,17 @@ header{
     }
 }
 
-.accueil{
-    // border: solid 2px blue;
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-}
-
 // ......................................
 
 
 
 // RESPONSIVE............................
 
-@media (max-width: 700px){
+@media (max-width: 910px){
 
-    .accueil{
-        flex-direction: column;  
+    .profil{
+        // border: 2px solid fuchsia;
+        width: 80%;            ;
     }
 }
 

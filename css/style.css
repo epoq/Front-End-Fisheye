@@ -7,8 +7,8 @@
 body {
   font-family: "DM", sans-serif;
   font-size: 0.85rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 h1 {
@@ -26,10 +26,18 @@ header {
   width: 14rem;
 }
 
+.photographer_section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .profil {
   display: flex;
   flex-direction: column;
   text-align: center;
+  width: 30%;
+  padding-bottom: 2rem;
 }
 .profil__icone {
   height: 12.5rem;
@@ -47,7 +55,7 @@ header {
 .profil__txt {
   vertical-align: middle;
 }
-.profil__txt--titre {
+.profil__txt--name {
   font-size: 2rem;
   color: #D3573C;
 }
@@ -58,15 +66,9 @@ header {
   color: #757575;
 }
 
-.accueil {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-}
-
-@media (max-width: 700px) {
-  .accueil {
-    flex-direction: column;
+@media (max-width: 910px) {
+  .profil {
+    width: 80%;
   }
 }
 @media (max-width: 620px) {
