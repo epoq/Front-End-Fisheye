@@ -19,7 +19,7 @@ const taglinePhotographer = document.getElementsByClassName('presentation__info-
 const portraitPhotographer = document.getElementsByClassName('presentation__photo');
 const photographerImg = document.createElement('img');
 const nameModale = document.getElementsByClassName('name_modale');
-
+console.log('in photographer.js')
 
 fetch("../../data/photographers.json")
   .then((res) => res.json())
