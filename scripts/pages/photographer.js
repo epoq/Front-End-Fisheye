@@ -22,7 +22,7 @@ const photographerImg = document.createElement('img');
 const nameModale = document.getElementsByClassName('name_modale');
 
 
-fetch("https://cdn-subeeto.fra1.digitaloceanspaces.com/photographers.json")
+fetch("./photographers.json")
   .then((res) => res.json())
   .then((data) => {
 
